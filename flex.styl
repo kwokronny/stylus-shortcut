@@ -1,0 +1,64 @@
+.flex {
+	// display: flex;
+	$flex_direction = {
+		h: row,
+		h_rtl: row-reverse,
+		v: column,
+		v_rtl: column-reverse
+	};
+
+	for $name, $value in $flex_direction {
+		&-{$name} {
+			display: flex;
+			flex-direction: $value;
+		}
+	}
+
+	$flex_wrap = {
+		n: nowrap,
+		w: wrap,
+		wr: wrap-reverse
+	};
+
+	for $name, $value in $flex_wrap {
+		&-w_{$name} {
+			flex-wrap: $value;
+		}
+	}
+
+	$flex_jc = {
+		s: stretch,
+		fs: flex-start,
+		fe: flex-end,
+		c: center,
+		sa: space-around,
+		se: space-evenly,
+		sb: space-between
+	};
+
+	for $name, $value in $flex_jc {
+		&-jc_{$name} {
+			justify-content: $value;
+		}
+
+		&-ac_{$name} {
+			align-content: $value;
+		}
+
+		$flex_ai = {
+			s: flex-start,
+			e: flex-end,
+			c: center
+		};
+
+		for $name, $value in $flex_ai {
+			&-ai_{$name} {
+				align-items: $value;
+			}
+		}
+	}
+
+	&-noshr {
+		flex-shrink: 0;
+	}
+}

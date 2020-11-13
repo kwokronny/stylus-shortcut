@@ -1,0 +1,14 @@
+{
+  "name": "@yoz/stylus-shortcut",
+  "version": "1.0.2",
+  "description": "yoz shortcut stylus mixins style",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "author": "kwokronny",
+  "license": "ISC",
+  "devDependencies": {
+    "stylus": "^0.54.7"
+  }
+}

@@ -1,0 +1,153 @@
+// float
+@import './variable.styl';
+
+.float-l {
+  float: left;
+}
+
+.float-r {
+  float: right;
+}
+
+.clearfix:after {
+  display: table;
+  content: ' ';
+  clear: both;
+}
+
+for $name, $c in yoz_color {
+  .text-c_{$name} {
+    color: $c;
+  }
+
+  .border-{$name} {
+    border: 1px solid $c;
+  }
+
+  .bg-{$name} {
+    background: $c;
+  }
+}
+
+
+for $name, $value in yoz_font_family {
+  .text-f_{$name} {
+    font-family: $value;
+  }
+}
+
+yoz_text_align = {
+  l: left,
+  r: right,
+  c: center,
+  j: justify
+};
+
+for $name, $value in yoz_text_align {
+  .text-a_{$name} {
+    text-align: $value;
+  }
+}
+
+.vm-wrap {
+  display: table;
+  size: 100% 100%;
+  yoz_vertical_align = {
+    t: top,
+    b: bottom,
+    m: middle
+  };
+
+  for $name, $value in yoz_vertical_align {
+    .vm-a_{$name} {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+for $name, $size in yoz_font_size {
+  .text-s_{$name} {
+    font-size: $size;
+  }
+
+  .text-lh_{$name} {
+    line-height: $size;
+  }
+}
+
+.text-clamp {
+  clamp(1);
+}
+
+for $name, $spacing in yoz_spacing {
+  .offset-t_{$name} {
+    position: relative;
+    top: $spacing * 1;
+  }
+
+  .offset-l_{$name} {
+    position: relative;
+    left: $spacing * -1;
+  }
+
+  .spac-m_{$name} {
+    margin: $spacing;
+  }
+
+  .spac-mv_{$name} {
+    margin-top: $spacing;
+    margin-bottom: $spacing;
+  }
+
+  .spac-mh_{$name} {
+    margin-left: $spacing;
+    margin-right: $spacing;
+  }
+
+  .spac-mt_{$name} {
+    margin-top: $spacing;
+  }
+
+  .spac-mb_{$name} {
+    margin-bottom: $spacing;
+  }
+
+  .spac-ml_{$name} {
+    margin-left: $spacing;
+  }
+
+  .spac-mr_{$name} {
+    margin-right: $spacing;
+  }
+
+  .spac-p_{$name} {
+    padding: $spacing;
+  }
+
+  .spac-pv_{$name} {
+    padding-top: $spacing;
+    padding-bottom: $spacing;
+  }
+
+  .spac-ph_{$name} {
+    padding-left: $spacing;
+    padding-right: $spacing;
+  }
+
+  .spac-pt_{$name} {
+    padding-top: $spacing;
+  }
+
+  .spac-pb_{$name} {
+    padding-bottom: $spacing;
+  }
+
+  .spac-pl_{$name} {
+    padding-left: $spacing;
+  }
+
+  .spac-pr_{$name} {
+    padding-right: $spacing;
+  }
+}

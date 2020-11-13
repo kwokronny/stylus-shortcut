@@ -1,0 +1,124 @@
+// size
+l-wh(w, h = w, r = false) {
+  width: w;
+  height: h;
+
+  if (r) {
+    border-radius: r;
+  }
+}
+
+// style quick set background,color and border
+s-bcb(bg, c = false, b = false) {
+  background: bg;
+
+  if (c) {
+    color: c;
+  }
+
+  if (b) {
+    border: 1px solid b;
+  }
+}
+
+// style of background display mode
+s-bm(s = cover, p = center, r = no-repeat) {
+  background-size: s;
+  background-position: p;
+  background-repeat: r;
+}
+
+s-shadow(px, dir, c = yoz_shadow_color.shadow) {
+  if(dir){
+
+  }
+  box-shadow: 
+}
+
+// text quick set font-size, line-height, text-align
+t-fl(s, lh = s, a = false) {
+  font-size: s;
+  line-height: lh;
+
+  if (a) {
+    text-align: a;
+  }
+}
+
+t-clamp(n) {
+  if (n == 1) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  } else {
+    display: -webkit-box;
+    -webkit-line-clamp: n;
+  }
+}
+
+// spacing horizontal margin
+l-mh(l, r = l) {
+  margin-left: l;
+  margin-right: r;
+}
+
+// spacing vertical margin
+l-mv(t, b = t) {
+  margin-top: t;
+  margin-bottom: b;
+}
+
+// spacing horizontal padding
+l-ph(l, r = l) {
+  padding-left: l;
+  padding-right: r;
+}
+
+// spacing horizontal padding
+l-pv(t, b = t) {
+  padding-top: t;
+  padding-bottom: b;
+}
+
+// position
+_pos(type, l, t = auto, r = false) {
+  position: unquote(type);
+
+  if (r == true) {
+    right: l;
+    bottom: t;
+  } else {
+    left: l;
+    top: t;
+  }
+}
+
+// position relative
+l-rela(l, t = auto, r = false) {
+  _pos('relative', l, t, r);
+}
+
+// position absolute
+l-abso(l, t = auto, r = false) {
+  _pos('absolute', l, t, r);
+}
+
+// position fixed
+l-fixed(l, t = auto, r = false) {
+  _pos('fixed', l, t, r);
+}
+
+// animation
+a-eff(n, ms, d = 0) {
+  animation-name: n;
+  animation-duration: ms;
+  animation-delay: d;
+}
+
+a-num(t = infinite, re = false) {
+  animation-iteration-count: t;
+
+  if (re) {
+    animation-direction: alternate;
+  }
+}
