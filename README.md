@@ -394,7 +394,7 @@ modules.export={
       t-fl: 50px;
     }
     .style1 {
-      t-fl: 50px 60px center;
+      t-fl: 50px 60px false center;
     }
     ```
     Result:

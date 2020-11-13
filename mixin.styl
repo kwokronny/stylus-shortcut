@@ -9,36 +9,22 @@ l-wh(w, h = w, r = false) {
 }
 
 // style quick set background,color and border
-s-bcb(bg, c = false, b = false) {
+s-bg(bg, s = cover, p = center, r = no-repeat) {
   background: bg;
 
-  if (c) {
-    color: c;
-  }
-
-  if (b) {
-    border: 1px solid b;
-  }
-}
-
-// style of background display mode
-s-bm(s = cover, p = center, r = no-repeat) {
   background-size: s;
   background-position: p;
   background-repeat: r;
 }
 
-s-shadow(px, dir, c = yoz_shadow_color.shadow) {
-  if(dir){
-
-  }
-  box-shadow: 
-}
-
-// text quick set font-size, line-height, text-align
-t-fl(s, lh = s, a = false) {
+// text quick set font-size, line-height,color, text-align
+t-fl(s, lh = s, c = false, a = false) {
   font-size: s;
   line-height: lh;
+
+  if (c) {
+    color: c;
+  }
 
   if (a) {
     text-align: a;
