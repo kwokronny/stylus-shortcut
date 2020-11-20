@@ -1,33 +1,20 @@
-// size
-l-wh(w, h = w, r = false) {
-  width: w;
-  height: h;
 
-  if (r) {
-    border-radius: r;
-  }
-}
 
 // style quick set background,color and border
 s-bg(bg, s = cover, p = center, r = no-repeat) {
   background: bg;
-
   background-size: s;
   background-position: p;
   background-repeat: r;
 }
 
-// text quick set font-size, line-height,color, text-align
-t-fl(s, lh = s, c = false, a = false) {
+// text quick set font-size, line-height, color
+t-fl(s, lh = s, c = false) {
   font-size: s;
   line-height: lh;
 
   if (c) {
     color: c;
-  }
-
-  if (a) {
-    text-align: a;
   }
 }
 
@@ -39,6 +26,16 @@ t-clamp(n) {
   } else {
     display: -webkit-box;
     -webkit-line-clamp: n;
+  }
+}
+//#region 布局
+// size
+l-wh(w, h = w, r = false) {
+  width: w;
+  height: h;
+
+  if (r) {
+    border-radius: r;
   }
 }
 
@@ -94,6 +91,9 @@ l-fixed(l, t = auto, r = false) {
   _pos('fixed', l, t, r);
 }
 
+//#endregion
+
+//#region animation
 // animation
 a-eff(n, ms, d = 0) {
   animation-name: n;
@@ -101,7 +101,7 @@ a-eff(n, ms, d = 0) {
   animation-delay: d;
 }
 
-a-num(t = infinite, re = false) {
+a-loop(t = infinite, re = false) {
   animation-iteration-count: t;
 
   if (re) {
