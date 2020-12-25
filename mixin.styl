@@ -1,5 +1,4 @@
 
-
 // style quick set background,color and border
 s-bg(bg, s = cover, p = center, r = no-repeat) {
   background: bg;
@@ -28,7 +27,8 @@ t-clamp(n) {
     -webkit-line-clamp: n;
   }
 }
-//#region 布局
+
+// #region 布局
 // size
 l-wh(w, h = w, r = false) {
   width: w;
@@ -57,43 +57,49 @@ l-ph(l, r = l) {
   padding-right: r;
 }
 
-// spacing horizontal padding
+// spacing vertical padding
 l-pv(t, b = t) {
   padding-top: t;
   padding-bottom: b;
 }
 
 // position
-_pos(type, l, t = auto, r = false) {
+_pos(type, x = auto, y = auto, dir = 'lt') {
   position: unquote(type);
 
-  if (r == true) {
-    right: l;
-    bottom: t;
-  } else {
-    left: l;
-    top: t;
+  if (dir == 'lt') {
+    left: x;
+    top: y;
+  } else if (dir == 'rt') {
+    right: x;
+    top: y;
+  } else if (dir == 'lb') {
+    left: x;
+    bottom: y;
+  } else if (dir == 'rb') {
+    right: x;
+    bottom: y;
   }
 }
 
 // position relative
-l-rela(l, t = auto, r = false) {
+l-rel(l, t, r = 'lt') {
   _pos('relative', l, t, r);
 }
 
 // position absolute
-l-abso(l, t = auto, r = false) {
+l-abs(l, t, r = 'lt') {
   _pos('absolute', l, t, r);
 }
 
 // position fixed
-l-fixed(l, t = auto, r = false) {
+l-fix(l, t, r = 'lt') {
   _pos('fixed', l, t, r);
 }
 
-//#endregion
+// #endregion
 
-//#region animation
+// #region animation
 // animation
 a-eff(n, ms, d = 0) {
   animation-name: n;

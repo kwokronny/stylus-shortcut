@@ -25,7 +25,7 @@ for $name, $c in yoz_color {
   }
 
   .bg-{$name} {
-    background: $c;
+    background-color: $c;
   }
 }
 
@@ -67,12 +67,9 @@ for $name, $value in yoz_text_align {
 }
 
 for $name, $size in yoz_font_size {
-  .text-s_{$name} {
-    font-size: $size;
-  }
-
-  .text-lh_{$name} {
-    line-height: $size;
+  .text-fl_{$name} {
+    font-size: $size[0]
+    line-height: $size[1];
   }
 }
 
