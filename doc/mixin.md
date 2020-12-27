@@ -16,7 +16,7 @@ modules.export={
       // 向预处理器 Loader 传递配置选项
       stylus: {
         import: [
-          "@yoz/stylus-shortcut/src/mixin.styl"
+          "@yoz/stylus-shortcut/mixin.styl"
         ]
       }
     }

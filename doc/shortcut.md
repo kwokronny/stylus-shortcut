@@ -1,16 +1,16 @@
-### 使用方式
+# 使用方式
 
 ```stylus
 @import "~@yoz/stylus-shortcut/src/shortcut.styl"
 ```
 
-### 自定义变量
+# 自定义变量
 
 在 `shortcut.styl` 文件前引用
 
 ```stylus
 @import "your-variable-file.styl" //如有自定义情况时可引入自定义变量
-@import "~@yoz/stylus-shortcut/src/shortcut.styl"
+@import "~@yoz/stylus-shortcut/shortcut.styl"
 ```
 
 亦可在 `stylusOptions` 配置中全局引用
@@ -74,7 +74,7 @@ yoz_spacing = {
 };
 ```
 
-- ### 文本
+- # 文本
 
   - **字体**
 
@@ -136,7 +136,7 @@ yoz_spacing = {
       }
     ```
 
-- ### 背景
+- # 背景
 
   - **颜色**
 
@@ -157,7 +157,7 @@ yoz_spacing = {
       ...
     ```
 
-- ### 边框
+- # 边框
 
   - **颜色**
 
@@ -184,7 +184,7 @@ yoz_spacing = {
     - `text-a_r` 文本居右
     - `text-a_j` 文本平整
 
-- ### 间距
+- # 间距
 
   > 根据变量`yoz_spacing`中成员生成，默认值查看 `常用样式规则 > 自定义变量`
 

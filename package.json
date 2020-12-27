@@ -2,7 +2,7 @@
   "name": "@hiyoz/stylus-shortcut",
   "version": "1.0.0",
   "description": "yoz shortcut stylus mixins style",
-  "main": "index.js",
+  "main": "shortcut.styl",
   "scripts": {
     "test": "node test/test.js"
   },

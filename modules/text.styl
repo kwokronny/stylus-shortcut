@@ -1,0 +1,52 @@
+.{yoz_prefix}text {
+	for $name, $c in yoz_color {
+		&-c_{$name} {
+			color: $c;
+		}
+	}
+
+	for $name, $value in yoz_font_family {
+		&-f_{$name} {
+			font-family: $value;
+		}
+	}
+
+	yoz_text_align = {
+		l: left,
+		r: right,
+		c: center,
+		j: justify
+	};
+
+	for $name, $value in yoz_text_align {
+		&-a_{$name} {
+			text-align: $value;
+		}
+	}
+
+	for $name, $size in yoz_font_size {
+		&-fl_{$name} {
+			font-size: $size[0];
+			line-height: $size[1];
+		}
+
+		&-s_{$name} {
+			font-size: $size[0];
+			line-height: $size[0];
+		}
+	}
+
+	for $line in 1 2 3 {
+		&-clamp_{$line} {
+			text-overflow: ellipsis;
+			overflow: hidden;
+
+			if ($line == 1) {
+				white-space: nowrap;
+			}
+
+			display: -webkit-box;
+			-webkit-line-clamp: $line;
+		}
+	}
+}

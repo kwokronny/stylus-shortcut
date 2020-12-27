@@ -1,0 +1,64 @@
+
+.{yoz_prefix}spac {
+  for $name, $spacing in yoz_spacing {
+    &-m_{$name} {
+      margin: $spacing;
+    }
+
+    &-mv_{$name} {
+      margin-top: $spacing;
+      margin-bottom: $spacing;
+    }
+
+    &-mh_{$name} {
+      margin-left: $spacing;
+      margin-right: $spacing;
+    }
+
+    &-mt_{$name} {
+      margin-top: $spacing;
+    }
+
+    &-mb_{$name} {
+      margin-bottom: $spacing;
+    }
+
+    &-ml_{$name} {
+      margin-left: $spacing;
+    }
+
+    &-mr_{$name} {
+      margin-right: $spacing;
+    }
+
+    &-p_{$name} {
+      padding: $spacing;
+    }
+
+    &-pv_{$name} {
+      padding-top: $spacing;
+      padding-bottom: $spacing;
+    }
+
+    &-ph_{$name} {
+      padding-left: $spacing;
+      padding-right: $spacing;
+    }
+
+    &-pt_{$name} {
+      padding-top: $spacing;
+    }
+
+    &-pb_{$name} {
+      padding-bottom: $spacing;
+    }
+
+    &-pl_{$name} {
+      padding-left: $spacing;
+    }
+
+    &-pr_{$name} {
+      padding-right: $spacing;
+    }
+  }
+}

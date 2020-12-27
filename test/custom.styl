@@ -1,29 +1,76 @@
-// 全局变量
 
-// 全局通用单位转换
-ptr(px) {
-  return unit(px, 'rem');
-}
-
-// 常用颜色
+yoz_prefix = '';
+/**
+ * 常用颜色
+ * default variable by color
+ */
 yoz_color = {
-  primary: #1f3340,
-  link: #0000ff,
-  title: #000000,
-  divider: #e8eaec
+  primary: #1890ff,
+  link: #1890ff,
+  success: #52c41a,
+  warning: #faad14,
+  error: #f5222d,
+  heading: rgba(black, 0.85),
+  text: rgba(black, 0.65),
+  sub_text: rgba(black, 0.45),
+  disabled: #c5c8ce,
+  border: #e8eaec
 };
-
-// 常用字体大小
+/**
+ * 常用线变量
+ * default variable by line
+ */
+yoz_line = {
+  so1: 1px solid yoz_color.border,
+  do1: 1px dotted yoz_color.border,
+  da2: 1px dashed yoz_color.border
+};
+/**
+ * 常用阴影变量
+ * default variable by shadow
+ */
+yoz_shadow = {
+  s: 0 0 2px rgba(0, 0, 0, 0.6),
+  m: 0 0 5px rgba(0, 0, 0, 0.6)
+};
+/**
+ * 常用字体变量
+ * default variable by font-family
+ */
+yoz_font_family = {
+  sans: unquote('-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif'),
+  serif: unquote('Noto Serif SC')
+};
+/**
+ * 常用字体大小与行距变量
+ * default variable by font-size and line-height
+ */
 yoz_font_size = {
-  s: ptr(12),
-  n: ptr(14),
-  b: ptr(18)
+  s: 12px 20px,
+  m: 14px 22px,
+  b: 16px 24px,
+  l: 18px 28px
 };
-// 常用间距大小
+/**
+ * 常用间距变量
+ * default variable by spacing
+ */
 yoz_spacing = {
-  '5': ptr(5),
-  '10': ptr(10),
-  '20': ptr(20),
-  '30': ptr(30),
-  '40': ptr(40)
+  '5': 5px,
+  '10': 10px,
+  '20': 20px,
+  '30': 30px
+};
+/**
+ * 默认栅格化相关变量
+ * default variable by grid system
+ */
+yoz_grid_col = 24; // 自定义栅格数
+yoz_grid_query = {
+  normal: '',
+  xs: 'max-width: 320px',
+  sm: 'min-width: 768px',
+  md: 'min-width: 992px',
+  lg: 'min-width: 1200px',
+  xl: 'min-width: 1920px'
 };

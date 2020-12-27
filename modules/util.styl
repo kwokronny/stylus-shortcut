@@ -1,0 +1,28 @@
+// float
+.{yoz_prefix} {
+	&float_l {
+		float: left;
+	}
+
+	&float-r {
+		float: right;
+	}
+
+	&clearfix:after {
+		display: table;
+		content: ' ';
+		clear: both;
+	}
+
+	for $name, $color in yoz_color {
+		&bg_{$name} {
+			background-color: $color;
+		}
+	}
+
+	for $name, $value in yoz_shadow {
+		&shadow_{$name} {
+			box-shadow: $value;
+		}
+	}
+}
