@@ -1,5 +1,4 @@
-
-yoz_prefix ?= 'yoz-';
+yoz_prefix ?= '';
 /**
  * 常用颜色
  * default variable by color
@@ -65,8 +64,8 @@ yoz_spacing ?= {
  * 默认栅格化相关变量
  * default variable by grid system
  */
-yoz_grid_col = 24; // 自定义栅格数
-yoz_grid_query = {
+yoz_grid_col ?= 24; // 自定义栅格数
+yoz_grid_query ?= {
   normal: '',
   xs: 'max-width: 320px',
   sm: 'min-width: 768px',
