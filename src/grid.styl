@@ -1,0 +1,58 @@
+
+media($class = '') {
+	$class += '_' unless ($class == '');
+
+	&col-{$class}0 {
+		display: none;
+	}
+
+	for $span in 1 .. yoz_grid_col {
+		$percent = (100 / yoz_grid_col * $span)%;
+
+		&col-{$class}{$span} {
+			width: $percent;
+		}
+
+		&col-{$class}offset_{$span} {
+			margin-left: $percent;
+		}
+
+		&col-{$class}pull_{$span} {
+			position: relative;
+			right: $percent;
+		}
+
+		&col-{$class}push_{$span} {
+			position: relative;
+			left: $percent;
+		}
+	}
+}
+
+.{yoz_prefix} {
+	&row {
+		position: relative;
+		box-sizing: border-box;
+
+		&:after {
+			content: ' ';
+			clear: both;
+			display: table;
+		}
+
+		[class*={yoz_prefix}+'col-'] {
+			float: left;
+			box-sizing: border-box;
+		}
+	}
+
+	for $k, $v in yoz_grid_query {
+		if ($v == '') {
+			media();
+		} else {
+			@media only screen and ({$v}: ) {
+				media($k);
+			}
+		}
+	}
+}

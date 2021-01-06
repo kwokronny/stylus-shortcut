@@ -282,7 +282,7 @@ modules.export={
 bg, s = cover, p = center, r = no-repeat
 
 - **s-bg(bg, size, position, repeat)**
-  > 快捷设置 background,color 和 border(1px solid borderColor)
+  > 快捷设置 background
 
 | 入参名   | 值格式                     | 是否可空 | 默认值    |
 | :------- | :------------------------- | :------- | :-------- |
@@ -318,36 +318,6 @@ Result:
   background-repeat: no-repeat;
 }
 ```
-
-- **s-bm(size, position, repeat)**
-
-  > 快捷设置背景的 size,position 和 repeat
-
-  | 入参名   | 值格式                 | 是否可空 | 默认值    |
-  | :------- | :--------------------- | :------- | :-------- |
-  | size     | background-size 值     | 否       | cover     |
-  | position | background-position 值 | 是       | center    |
-  | repeat   | background-repaeat 值  | 是       | no-repeat |
-
-  Example:
-
-  ```stylus
-  .style {
-    s-bcb: url('image_path');
-    s-bm();
-  }
-  ```
-
-  Result:
-
-  ```css
-  .style {
-    background: url("image_path");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-  ```
 
 - **a-eff(name, duration, delay)**
 
