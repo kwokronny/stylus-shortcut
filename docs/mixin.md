@@ -2,28 +2,6 @@
 
 stylus 配置中全局引入，主要简写在编写样式过程中，常见的样式属性依赖，如宽度常与高度同时被设置，背景颜色及文字颜色等。以减少编码量，加快工作效率。
 
-## 使用方式
-
-如 vue-cli@3 配置示例，在 stylus-loader 中配置 import 做到全局引入
-
-```javascript
-//vue.config.js
-modules.export={
-  ...
-  css: {
-    // 配置css模块
-    loaderOptions: {
-      // 向预处理器 Loader 传递配置选项
-      stylus: {
-        import: [
-          "@yoz/stylus-shortcut/mixin.styl"
-        ]
-      }
-    }
-  }
-  ...
-}
-```
 
 ## 布局
 
