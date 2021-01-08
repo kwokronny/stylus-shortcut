@@ -40,7 +40,16 @@ media($class = '') {
 			display: table;
 		}
 
-		[class*={yoz_prefix}+'col-'] {
+		for $name, $spacing in yoz_spacing {
+			&.row-g_{$name} {
+				[class*=\'{yoz_prefix}col-\'] {
+					padding-left: $spacing;
+					padding-right: $spacing;
+				}
+			}
+		}
+
+		[class*=\'{yoz_prefix}col-\'] {
 			float: left;
 			box-sizing: border-box;
 		}

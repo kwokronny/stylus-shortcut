@@ -29,11 +29,6 @@
 			font-size: $size[0];
 			line-height: $size[1];
 		}
-
-		&-s_{$name} {
-			font-size: $size[0];
-			line-height: $size[0];
-		}
 	}
 
 	for $line in 1 2 3 {
@@ -43,10 +38,10 @@
 
 			if ($line == 1) {
 				white-space: nowrap;
+			} else {
+				display: -webkit-box;
+				-webkit-line-clamp: $line;
 			}
-
-			display: -webkit-box;
-			-webkit-line-clamp: $line;
 		}
 	}
 }

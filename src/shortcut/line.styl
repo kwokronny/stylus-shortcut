@@ -21,9 +21,9 @@
 			border-right: $value;
 		}
 
-		for $dir in $yoz_line_dir {
+		for $dir,$dir_value in $yoz_line_dir {
 			&-{$name}_{$dir} {
-				border-{$dir}: $value;
+				border-{$dir_value}: $value;
 			}
 		}
 	}

@@ -25,6 +25,7 @@ t-clamp(n) {
     white-space: nowrap;
   } else {
     display: -webkit-box;
+    overflow: hidden;
     -webkit-line-clamp: n;
   }
 }
@@ -115,3 +116,15 @@ a-loop(t = infinite, re = false) {
     animation-direction: alternate;
   }
 }
+
+// #endregion
+
+// #region flex
+f-dir(dir, jc = normal, ai = normal, w = nowrap) {
+  display: flex;
+  flex-direction: dir;
+  justify-content: jc;
+  align-items: ai;
+  flex-wrap: w;
+}
+// #endregion
