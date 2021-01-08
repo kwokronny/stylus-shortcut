@@ -1,21 +1,17 @@
 // @import './test/custom.styl';
-// @import './src/mixin.styl';
+@import './src/mixin.styl';
 @import './src/shortcut.styl';
 
-// .radius-box {
-//   l-wh: 50px 30px 10px;
-//   t-fl: 50px 60px #fff;
-//   l-mh: 50px 0;
-//   l-ph: 50px 0;
-//   l-mv: 50px;
-//   l-pv: 50px;
-//   l-abs: 50px 0 'rb';
-//   l-rel: 50px 0 'lb';
-//   l-fix: 50px 50px;
-//   t-clamp: 1;
-//   t-clamp: 3;
-//   s-bg: #f2f2f2;
-//   s-bg: url('image_path') cover;
-//   a-eff: fade 1s 0.5s;
-//   a-loop: 2 true;
-// }
+.demo {
+	border: 1px solid #f2f2f2;
+	padding: 10px;
+	l-rel: 0 0;
+	l-mv: 30px;
+
+	&:before {
+		content: '示例:';
+		t-fl: 12px 20px;
+		display: block;
+		l-abs: 0 -20px;
+	}
+}

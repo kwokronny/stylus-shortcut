@@ -70,51 +70,40 @@ yoz_font_family = {
 
   > 根据变量`yoz_font_family`中成员生成，默认值查看 `快速开始 > 自定义变量`
 
-  - `text-f_${key}`
+  - `text-f_${name}`
 
   如：
 
+  ```html
   <div class="text-f_sans">无衬线字体</div>
   <div class="text-f_serif">衬线字体</div>
+  ```
 
 - **颜色**
 
   > 根据变量`yoz_color`中成员生成，默认值查看 `快速开始 > 自定义变量`
 
-  - `text-c_${key}`
+  - `text-c_${color}`
 
   如：
+
   ```html
-    <div class="text-c_primary">字体颜色primary</div>
-    <div class="text-c_success">字体颜色success</div>
+  <div class="text-c_primary">字体颜色primary</div>
+  <div class="text-c_success">字体颜色success</div>
   ```
 
 - **字体大小与行距**
 
   > 根据变量`yoz_font_size`中成员生成，默认值查看 `快速开始 > 自定义变量`
 
-  - `text-fl_${key}`
+  - `text-sl_${name}`
 
   如：
-  ```html
-    <div class="text-fl_s">小字体</div>
-    <div class="text-fl_m">常规字体</div>
-    <div class="text-fl_l">大字体</div>
-  ```
 
-  ```css
-  .text-fl_s {
-    font-size: 12px;
-    line-height: 20px;
-  }
-  .text-fl_m {
-    font-size: 14px;
-    line-height: 24px;
-  }
-  .text-fl_l {
-    font-size: 18px;
-    line-height: 30px;
-  }
+  ```html
+  <div class="text-sl_s">小字体</div>
+  <div class="text-sl_m">常规字体</div>
+  <div class="text-sl_l">大字体</div>
   ```
 
 - **省略**
@@ -125,43 +114,36 @@ yoz_font_family = {
 
   如：
 
-  ```css
-  .text-clamp_1 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .text-clamp_2 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-  }
-  .text-clamp_3 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-  }
+  ```html
+  <div class="text-clamp_1">
+    君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。与君歌一曲，请君为我倾耳听。钟鼓馔玉不足贵，但愿长醉不愿醒。古来圣贤皆寂寞，惟有饮者留其名。陈王昔时宴平乐，斗酒十千恣欢谑。主人何为言少钱，径须沽取对君酌。五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。
+  </div>
+  <div class="text-clamp_2 spac-mv_20">
+    君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。与君歌一曲，请君为我倾耳听。钟鼓馔玉不足贵，但愿长醉不愿醒。古来圣贤皆寂寞，惟有饮者留其名。陈王昔时宴平乐，斗酒十千恣欢谑。主人何为言少钱，径须沽取对君酌。五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。
+  </div>
+  <div class="text-clamp_3 spac-mv_20">
+    君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。与君歌一曲，请君为我倾耳听。钟鼓馔玉不足贵，但愿长醉不愿醒。古来圣贤皆寂寞，惟有饮者留其名。陈王昔时宴平乐，斗酒十千恣欢谑。主人何为言少钱，径须沽取对君酌。五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。
+  </div>
   ```
 
 - **排列**
 
-  - `text-a_l` 文本居左
-  - `text-a_c` 文本居中
-  - `text-a_r` 文本居右
-  - `text-a_j` 文本平整
+  | key | 对应值  | 说明     |
+  | :-- | ------- | -------- |
+  | l   | left    | 文本居左 |
+  | c   | center  | 文本居中 |
+  | r   | right   | 文本居右 |
+  | j   | justify | 文本平整 |
+
+  - `text-a_${key}` 文本居左
 
   如：
 
-  ```css
-    .text-a_l {
-      text-align: left;
-    }
-    .text-a_c {
-      text-align: center;
-    }
-    ...
+  ```html
+  <div class="text-a_l">文本居左</div>
+  <div class="text-a_c">文本居中</div>
+  <div class="text-a_r">文本居右</div>
+  <div class="text-a_j">文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整文本平整</div>
   ```
 
 # 背景
@@ -170,19 +152,12 @@ yoz_font_family = {
 
   > 根据变量`yoz_color`中成员生成，默认值查看 `快速开始 > 自定义变量`
 
-  - `bg-${color}`
+  - `bg-c_${color}`
 
   如：
-
-  ```css
-    .bg-c_primary{
-      background-color: #1890ff
-    }
-
-    .bg-c_success{
-      background-color: #52c41a
-    }
-    ...
+  ```html
+  <div class="bg-c_primary spac-mv_10">常用背景色</div>
+  <div class="bg-c_success spac-mv_10">成功背景色</div>
   ```
 
 - **填充模式**
@@ -195,16 +170,19 @@ yoz_font_family = {
   - `bg-m_${key}`
 
   如：
-
-  ```css
-    .bg-m_cover{
-      background-size: cover;
+  ```html
+  <style>
+    .bg{
+      background-image: url(./bg.png);
+      width: 100px;
+      height: 100px;
     }
-
-    .bg-m_contain{
-      background-color: contain;
-    }
-    ...
+  </style>
+  <div class="clearfix">
+  <div class="bg float-l bg-m_cover spac-m_10"></div>
+  <div class="bg float-l bg-m_contain spac-m_10"></div>
+  <div class="bg float-l bg-m_fill spac-m_10"></div>
+  </div>
   ```
 
 # 边框
@@ -222,17 +200,24 @@ yoz_font_family = {
   - `line-${lineName}_b` 设置下
 
   如：
-
-  ```css
-    .border-c_primary{
-      border:1px solid #1890ff
+  ```html
+  <style>
+    .line{
+      width: 100px;
+      height: 100px;
     }
-
-    .border-c_success{
-      border:1px solid #52c41a
-    }
-    ...
+  </style>
+  <div class="clearfix">
+    <div class="line float-l line-so1 spac-m_10"></div>
+    <div class="line float-l line-da1_v spac-m_10"></div>
+    <div class="line float-l line-da1_h spac-m_10"></div>
+    <div class="line float-l line-do1_l spac-m_10"></div>
+    <div class="line float-l line-do1_t spac-m_10"></div>
+    <div class="line float-l line-do1_r spac-m_10"></div>
+    <div class="line float-l line-do1_b spac-m_10"></div>
+  </div>
   ```
+
 
 # 间距
 
