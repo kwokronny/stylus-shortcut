@@ -1,4 +1,6 @@
-> 通过自定义变量中的成员生成常用的样式，及梳理生成常用的如栅格化，弹性盒子等样式，引入即可应用。
+## 开发意图
+
+开发中常见许多样式规则并不复杂，但应用范围广，相同规则需要重复编写，组件元素下大部分样式已根据类型组件的样式完成，局部元素调整即可时。通过变量生成的方式，也更易迭代应用于样式不多变的平台类前端等项目；也梳理生成常用的如栅格化，弹性盒子等样式，引入即可应用。
 
 ## 使用方式
 
@@ -42,8 +44,11 @@ modules.export={
 > 变量成员可按规则自由设置，自定义变量将盖默认值
 
 ```stylus
-
-// 默认常用颜色，
+yoz_prefix = '';
+/**
+ * 常用颜色
+ * default variable by color
+ */
 yoz_color = {
   primary: #1890ff,
   link: #1890ff,
@@ -56,12 +61,64 @@ yoz_color = {
   disabled: #c5c8ce,
   border: #e8eaec
 };
-// 常用字体
+/**
+ * 常用线变量
+ * default variable by line
+ */
+yoz_line = {
+  so1: 1px solid yoz_color.border,
+  do1: 1px dotted yoz_color.border,
+  da1: 1px dashed yoz_color.border
+};
+/**
+ * 常用阴影变量
+ * default variable by shadow
+ */
+yoz_shadow = {
+  s: 0 0 2px rgba(0, 0, 0, 0.6),
+  m: 0 0 5px rgba(0, 0, 0, 0.6)
+};
+/**
+ * 常用字体变量
+ * default variable by font-family
+ */
 yoz_font_family = {
   sans: unquote('-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif'),
-  serif: unquote('Noto Serif SC')
+  serif: unquote('serif')
 };
-...
+/**
+ * 常用字体大小与行距变量
+ * default variable by font-size and line-height
+ */
+yoz_font_size = {
+  s: 12px 20px,
+  m: 14px 22px,
+  b: 16px 24px,
+  l: 18px 28px
+};
+/**
+ * 常用间距变量
+ * default variable by spacing
+ */
+yoz_spacing = {
+  '5': 5px,
+  '10': 10px,
+  '20': 20px,
+  '30': 30px
+};
+/**
+ * 默认栅格化相关变量
+ * default variable by grid system
+ */
+yoz_grid_col = 24; // 自定义栅格数
+yoz_grid_query = {
+  normal: '',
+  xs: 'max-width: 320px',
+  sm: 'min-width: 768px',
+  md: 'min-width: 992px',
+  lg: 'min-width: 1200px',
+  xl: 'min-width: 1920px'
+};
 ```
 
 # 文本
@@ -155,9 +212,17 @@ yoz_font_family = {
   - `bg-c_${color}`
 
   如：
+
   ```html
-  <div class="bg-c_primary spac-mv_10">常用背景色</div>
-  <div class="bg-c_success spac-mv_10">成功背景色</div>
+  <style>
+    .bgcolor {
+      width: 100px;
+      height: 100px;
+      color: #fff;
+    }
+  </style>
+  <div class="bgcolor bg-c_primary spac-mv_10">常用背景色</div>
+  <div class="bgcolor bg-c_success spac-mv_10">成功背景色</div>
   ```
 
 - **填充模式**
@@ -170,18 +235,19 @@ yoz_font_family = {
   - `bg-m_${key}`
 
   如：
+
   ```html
   <style>
-    .bg{
+    .bg {
       background-image: url(./bg.png);
       width: 100px;
       height: 100px;
     }
   </style>
   <div class="clearfix">
-  <div class="bg float-l bg-m_cover spac-m_10"></div>
-  <div class="bg float-l bg-m_contain spac-m_10"></div>
-  <div class="bg float-l bg-m_fill spac-m_10"></div>
+    <div class="bg float-l bg-m_cover spac-m_10"></div>
+    <div class="bg float-l bg-m_contain spac-m_10"></div>
+    <div class="bg float-l bg-m_fill spac-m_10"></div>
   </div>
   ```
 
@@ -191,20 +257,26 @@ yoz_font_family = {
 
   > 根据变量`yoz_line`中成员生成，默认值查看 `快速开始 > 自定义变量`
 
+  | key | 说明     |
+  | :-- | -------- |
+  | h   | 左右两边 |
+  | v   | 上下两边 |
+  | l   | 左       |
+  | r   | 右       |
+  | t   | 上       |
+  | b   | 下       |
+
   - `line-${lineName}` 设置四边
-  - `line-${lineName}_h` 设置左右
-  - `line-${lineName}_v` 设置上下
-  - `line-${lineName}_l` 设置左
-  - `line-${lineName}_r` 设置右
-  - `line-${lineName}_t` 设置上
-  - `line-${lineName}_b` 设置下
+  - `line-${lineName}_${key}`
 
   如：
+
   ```html
   <style>
-    .line{
+    .line {
       width: 100px;
       height: 100px;
+      background: #fcfcfc;
     }
   </style>
   <div class="clearfix">
@@ -218,37 +290,55 @@ yoz_font_family = {
   </div>
   ```
 
-
 # 间距
 
 > 根据变量`yoz_spacing`中成员生成，默认值查看 `快速开始 > 自定义变量`
 
-- `spac-mv_${spacName}` 外间距 - 上下
-- `spac-mh_${spacName}` 外间距 - 左右
-- `spac-ml_${spacName}` 外间距 - 左
-- `spac-mr_${spacName}` 外间距 - 右
-- `spac-mt_${spacName}` 外间距 - 上
-- `spac-mb_${spacName}` 外间距 - 下
-- `spac-pv_${spacName}` 内间距 - 上下
-- `spac-ph_${spacName}` 内间距 - 左右
-- `spac-pl_${spacName}` 内间距 - 左
-- `spac-pr_${spacName}` 内间距 - 右
-- `spac-pt_${spacName}` 内间距 - 上
-- `spac-pb_${spacName}` 内间距 - 下
+- `spac-${key}_${spacName}`
+
+| key | 说明          |
+| :-- | ------------- |
+| mv  | 外间距 - 上下 |
+| mh  | 外间距 - 左右 |
+| ml  | 外间距 - 左   |
+| mr  | 外间距 - 右   |
+| mt  | 外间距 - 上   |
+| mb  | 外间距 - 下   |
+| pv  | 内间距 - 上下 |
+| ph  | 内间距 - 左右 |
+| pl  | 内间距 - 左   |
+| pr  | 内间距 - 右   |
+| pt  | 内间距 - 上   |
+| pb  | 内间距 - 下   |
 
 如：
 
-```css
-  .spac-mv_10{
-    margin-top:10px;
-    margin-bottom:10px;
+```html
+<style>
+  .spac {
+    width: 100px;
+    height: 100px;
+    background: #f2f2f2;
   }
-
-  .spac-ph_10{
-    padding-top:10px;
-    padding-bottom:10px;
-  }
-  ...
+</style>
+<div class="clearfix">
+  <div class="spac float-l spac-m_10">外间距</div>
+  <div class="spac float-l spac-mv_10">外间距 - 上下</div>
+  <div class="spac float-l spac-mh_10">外间距 - 左右</div>
+  <div class="spac float-l spac-ml_10">外间距 - 左</div>
+  <div class="spac float-l spac-mr_10">外间距 - 右</div>
+  <div class="spac float-l spac-mt_10">外间距 - 上</div>
+  <div class="spac float-l spac-mb_10">外间距 - 下</div>
+</div>
+<div class="clearfix">
+  <div class="spac float-l spac-p_10">内间距</div>
+  <div class="spac float-l spac-pv_10">内间距 - 上下</div>
+  <div class="spac float-l spac-ph_10">内间距 - 左右</div>
+  <div class="spac float-l spac-pl_10">内间距 - 左</div>
+  <div class="spac float-l spac-pr_10">内间距 - 右</div>
+  <div class="spac float-l spac-pt_10">内间距 - 上</div>
+  <div class="spac float-l spac-pb_10">内间距 - 下</div>
+</div>
 ```
 
 # 弹性盒子
@@ -328,6 +418,8 @@ yoz_font_family = {
   ...
   ```
 
+# 栅格化
+
 # 浮动
 
 - `float-l` 左浮动
@@ -336,16 +428,17 @@ yoz_font_family = {
 
 如：
 
-```css
-.float-l {
-  float: left;
-}
-.float-r {
-  float: right;
-}
-.clearfix:after {
-  content: " ";
-  display: table;
-  clear: both;
-}
+```html
+<style>
+  .float {
+    width: 100px;
+    height: 100px;
+    background: #f2f2f2;
+  }
+</style>
+<div class="float float-r spac-mb_10">右浮动</div>
+<div class="clearfix">
+  <div class="float float-l">左浮动</div>
+  <div class="float float-r">右浮动</div>
+</div>
 ```

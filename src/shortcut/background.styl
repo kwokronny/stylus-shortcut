@@ -1,4 +1,3 @@
-// float
 .{yoz_prefix} {
 	for $name, $color in yoz_color {
 		&bg-c_{$name} {
@@ -16,6 +15,7 @@
 	for $name, $mode in $background_mode {
 		&bg-m_{$name} {
 			background-size: $mode;
+			background-position: center;
 		}
 	}
 }

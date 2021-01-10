@@ -8,10 +8,12 @@
 		float: right;
 	}
 
-	&clearfix:after {
-		display: table;
-		content: ' ';
-		clear: both;
+	&clearfix {
+		&:before, &:after {
+			display: table;
+			content: ' ';
+			clear: both;
+		}
 	}
 
 	for $name, $value in yoz_shadow {

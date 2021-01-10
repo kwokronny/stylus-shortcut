@@ -1,3 +1,7 @@
+/**
+* 样式生成前缀，默认不添加前缀
+* 巧合下有冲突情况下，可为内置的样式规则增加前缀
+*/
 yoz_prefix ?= '';
 /**
  * 常用颜色
@@ -65,6 +69,7 @@ yoz_spacing ?= {
  * default variable by grid system
  */
 yoz_grid_col ?= 24; // 自定义栅格数
+//栅格化 响应式界限
 yoz_grid_query ?= {
   normal: '',
   xs: 'max-width: 320px',

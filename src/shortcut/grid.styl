@@ -13,19 +13,23 @@ media($class = '') {
 			width: $percent;
 		}
 
-		&col-{$class}offset_{$span} {
+		&col-{$class}ml_{$span} {
 			margin-left: $percent;
 		}
-
-		&col-{$class}pull_{$span} {
-			position: relative;
-			right: $percent;
+		
+		&col-{$class}mr_{$span} {
+			margin-right: $percent;
 		}
 
-		&col-{$class}push_{$span} {
-			position: relative;
-			left: $percent;
-		}
+		// &col-{$class}pull_{$span} {
+		// 	position: relative;
+		// 	right: $percent;
+		// }
+
+		// &col-{$class}push_{$span} {
+		// 	position: relative;
+		// 	left: $percent;
+		// }
 	}
 }
 
