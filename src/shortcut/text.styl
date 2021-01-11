@@ -25,13 +25,13 @@
 	}
 
 	for $name, $size in yoz_font_size {
-		&-fl_{$name} {
+		&-s_{$name} {
 			font-size: $size[0];
 			line-height: $size[1];
 		}
 	}
 
-	for $line in 1 2 3 {
+	for $line in 1 .. 6 {
 		&-clamp_{$line} {
 			text-overflow: ellipsis;
 			overflow: hidden;

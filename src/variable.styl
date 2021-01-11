@@ -1,7 +1,7 @@
 /**
-* 样式生成前缀，默认不添加前缀
-* 巧合下有冲突情况下，可为内置的样式规则增加前缀
-*/
+ * 样式生成前缀，默认不添加前缀
+ * 巧合下有冲突情况下，可为内置的样式规则增加前缀
+ */
 yoz_prefix ?= '';
 /**
  * 常用颜色
@@ -27,6 +27,17 @@ yoz_line ?= {
   so1: 1px solid yoz_color.border,
   do1: 1px dotted yoz_color.border,
   da1: 1px dashed yoz_color.border
+};
+/**
+ * 常用圆角变量
+ * default variable by border radius
+ */
+yoz_radius ?= {
+  s: 4px,
+  m: 8px,
+  l: 20px,
+  lr: 20px 0 0 0,
+  c: 100%
 };
 /**
  * 常用阴影变量
@@ -62,14 +73,20 @@ yoz_spacing ?= {
   '5': 5px,
   '10': 10px,
   '20': 20px,
-  '30': 30px
+  '30': 30px,
+  a: auto
 };
 /**
  * 默认栅格化相关变量
  * default variable by grid system
  */
 yoz_grid_col ?= 24; // 自定义栅格数
-//栅格化 响应式界限
+// 栅格化 栅格间距
+yoz_grid_gutter ?= {
+  s: 10px,
+  m: 20px
+}; 
+// 栅格化 响应式界限
 yoz_grid_query ?= {
   normal: '',
   xs: 'max-width: 320px',

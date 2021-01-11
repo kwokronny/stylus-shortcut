@@ -16,7 +16,7 @@
 	$flex_wrap = {
 		n: nowrap,
 		w: wrap,
-		wr: wrap-reverse
+		w_rtl: wrap-reverse
 	};
 
 	for $name, $value in $flex_wrap {
@@ -25,17 +25,16 @@
 		}
 	}
 
-	$flex_jc = {
-		s: stretch,
+	$flex_content = {
 		fs: flex-start,
-		fe: flex-end,
 		c: center,
+		fe: flex-end,
 		sa: space-around,
 		se: space-evenly,
 		sb: space-between
 	};
 
-	for $name, $value in $flex_jc {
+	for $name, $value in $flex_content {
 		&-jc_{$name} {
 			justify-content: $value;
 		}
@@ -45,15 +44,22 @@
 		}
 	}
 
-	$flex_ai = {
-		s: flex-start,
-		e: flex-end,
-		c: center
+	$flex_items = {
+		s: start,
+		c: center,
+		b: baseline,
+		e: end,
+		st: stretch
 	};
 
-	for $name, $value in $flex_ai {
+	for $name, $value in $flex_items {
+
 		&-ai_{$name} {
 			align-items: $value;
+		}
+
+		&-js_{$name} {
+			justify-self: $value;
 		}
 
 		&-as_{$name} {
@@ -61,11 +67,8 @@
 		}
 	}
 
-	&-1 {
+	&-fill {
 		flex: 1;
 	}
 
-	&-0 {
-		flex: 0 0;
-	}
 }

@@ -16,45 +16,47 @@ media($class = '') {
 		&col-{$class}ml_{$span} {
 			margin-left: $percent;
 		}
-		
+
 		&col-{$class}mr_{$span} {
 			margin-right: $percent;
 		}
-
-		// &col-{$class}pull_{$span} {
-		// 	position: relative;
-		// 	right: $percent;
-		// }
-
-		// &col-{$class}push_{$span} {
-		// 	position: relative;
-		// 	left: $percent;
-		// }
 	}
 }
 
 .{yoz_prefix} {
+	for $name, $spacing in yoz_grid_gutter {
+		&gutter-{$name} {
+			[class*=\'{yoz_prefix}col-\'] {
+				padding-left: $spacing;
+				padding-right: $spacing;
+			}
+		}
+	}
+
 	&row {
 		position: relative;
 		box-sizing: border-box;
 
-		&:after {
+		&:before, &:after {
 			content: ' ';
 			clear: both;
 			display: table;
 		}
 
-		for $name, $spacing in yoz_spacing {
-			&.row-g_{$name} {
-				[class*=\'{yoz_prefix}col-\'] {
-					padding-left: $spacing;
-					padding-right: $spacing;
-				}
-			}
-		}
-
 		[class*=\'{yoz_prefix}col-\'] {
 			float: left;
+			box-sizing: border-box;
+		}
+	}
+
+	&row-flex {
+		position: relative;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		[class*=\'{yoz_prefix}col-\'] {
 			box-sizing: border-box;
 		}
 	}
