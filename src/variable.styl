@@ -88,10 +88,8 @@ yoz_grid_gutter ?= {
 }; 
 // 栅格化 响应式界限
 yoz_grid_query ?= {
-  normal: '',
-  xs: 'max-width: 320px',
-  sm: 'min-width: 768px',
-  md: 'min-width: 992px',
-  lg: 'min-width: 1200px',
-  xl: 'min-width: 1920px'
+  lg: 'max-width: 1200px', //超大屏
+  md: 'max-width: 992px', //电脑
+  pa: 'max-width: 768px', //平板
+  ph: 'max-width: 540px', //手机
 };

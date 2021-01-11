@@ -1,6 +1,6 @@
 ## 开发意图
 
-开发中常见许多样式规则并不复杂，但应用范围广，相同规则需要重复编写，组件元素下大部分样式已根据类型组件的样式完成，局部元素调整即可时。通过变量生成的方式，也更易迭代应用于样式不多变的平台类前端等项目；也梳理生成常用的如栅格化，弹性盒子等样式，引入即可应用。
+开发中常见许多样式规则并不复杂，但应用范围广，相同规则需要重复编写，组件元素下大部分样式已根据类似组件的样式完成，局部元素调整即可时。通过变量生成的方式，也更易迭代应用于样式不多变的平台类前端等项目；也梳理生成常用的如栅格化，弹性盒子等样式，引入即可应用。
 
 ## 使用方式
 
@@ -13,41 +13,12 @@
 在 `shortcut.styl` 文件中已通过 stylus 提供特性 `?=` 初始化默认变量，需要自定义变量时，仅需在引入此文件前引用自定义的变量文件覆盖对应的变量，即可按照新定义的变量生成样式。
 
 ```stylus
-@import "your-variable-file.styl" //如有自定义情况时可引入自定义变量
-@import "~@yoz/stylus-shortcut/src/shortcut.styl"
-```
-
-亦可在 `stylusOptions` 配置中全局引用，方便项目中多样式文件可直接应用变量
-如: vue-cli@3 配置示例
-
-```javascript
-//vue.config.js
-modules.export={
-  ...
-  css: {
-    // 配置css模块
-    loaderOptions: {
-      // 向预处理器 Loader 传递配置选项
-      stylus: {
-        import: [
-          "your-custom-file.styl"
-        ]
-      }
-    }
-  }
-  ...
-}
-```
-
-> 变量成员可按规则自由设置，自定义变量将盖默认值
-
-```stylus
-// 自定义变量文件 `your-custom-file.styl`
+// 自定义变量模板
 yoz_prefix = '';
 /**
- * 常用颜色
- * default variable by color
- */
+* 常用颜色
+* default variable by color
+*/
 yoz_color = {
   primary: #1890ff,
   link: #1890ff,
@@ -61,34 +32,34 @@ yoz_color = {
   border: #e8eaec
 };
 /**
- * 常用线变量
- * default variable by line
- */
+* 常用线变量
+* default variable by line
+*/
 yoz_line = {
   so1: 1px solid yoz_color.border,
   do1: 1px dotted yoz_color.border,
   da1: 1px dashed yoz_color.border
 };
 /**
- * 常用阴影变量
- * default variable by shadow
- */
+* 常用阴影变量
+* default variable by shadow
+*/
 yoz_shadow = {
   s: 0 0 2px rgba(0, 0, 0, 0.6),
   m: 0 0 5px rgba(0, 0, 0, 0.6)
 };
 /**
- * 常用字体变量
- * default variable by font-family
- */
+* 常用字体变量
+* default variable by font-family
+*/
 yoz_font_family = {
   sans: unquote('-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif'),
   serif: unquote('serif')
 };
 /**
- * 常用字体大小与行距变量
- * default variable by font-size and line-height
- */
+* 常用字体大小与行距变量
+* default variable by font-size and line-height
+*/
 yoz_font_size = {
   s: 12px 20px,
   m: 14px 22px,
@@ -96,9 +67,9 @@ yoz_font_size = {
   l: 18px 28px
 };
 /**
- * 常用间距变量
- * default variable by spacing
- */
+* 常用间距变量
+* default variable by spacing
+*/
 yoz_spacing = {
   '5': 5px,
   '10': 10px,
@@ -106,9 +77,9 @@ yoz_spacing = {
   '30': 30px
 };
 /**
- * 默认栅格化相关变量
- * default variable by grid system
- */
+* 默认栅格化相关变量
+* default variable by grid system
+*/
 yoz_grid_col = 24; // 自定义栅格数
 yoz_grid_query = {
   normal: '',
@@ -119,6 +90,38 @@ yoz_grid_query = {
   xl: 'min-width: 1920px'
 };
 ```
+
+ 复制修改  变量模板后在 shortcut.styl 前引用即可
+
+```stylus
+@import "your-variable-file.styl" //
+@import "~@yoz/stylus-shortcut/src/shortcut.styl"
+```
+
+可在 `stylusOptions` 配置中全局引用，方便项目中多样式文件可直接应用变量
+
+如: vue-cli@3 配置
+
+```javascript
+  //vue.config.js
+  modules.export={
+    ...
+    css: {
+      // 配置css模块
+      loaderOptions: {
+        // 向预处理器 Loader 传递配置选项
+        stylus: {
+          import: [
+            "your-custom-file.styl"
+          ]
+        }
+      }
+    }
+    ...
+  }
+```
+
+> 变量成员可按规则自由设置，自定义变量将盖默认值
 
 ## 常用
 
@@ -134,7 +137,7 @@ yoz_grid_query = {
 
   | key | 说明     |
   | :-- | -------- |
-  | a   | 全边 |
+  | a   | 全边     |
   | h   | 左右两边 |
   | v   | 上下两边 |
   | l   | 左       |
@@ -145,18 +148,19 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-    <div id="lineDemo" class="box line-a_so1"></div>
-    <div class="spac-mt_10">
-      <div>设置边线：</div>
-      <div><label><input data-id="lineDemo" data-class="box line-a_" name="line" value="so1" type="radio" /> 实线全边线 [ line-so1 ] </label></div>
-      <div><label><input data-id="lineDemo" data-class="box line-v_" name="line" value="do1" type="radio" /> 点线上下边线 [ line-do1_v ] </label></div>
-      <div><label><input data-id="lineDemo" data-class="box line-h_" name="line" value="do1" type="radio" /> 点线左右边线 [ line-do1_h ] </label></div>
-      <div><label><input data-id="lineDemo" data-class="box line-l_" name="line" value="da1" type="radio" /> 虚线左边线 [ line-da1_l ] </label></div>
-      <div><label><input data-id="lineDemo" data-class="box line-t_" name="line" value="da1" type="radio" /> 虚线上边线 [ line-da1_t ] </label></div>
-      <div><label><input data-id="lineDemo" data-class="box line-r_" name="line" value="da1" type="radio" /> 虚线右边线 [ line-da1_r ] </label></div>
-      <div><label><input data-id="lineDemo" data-class="box line-b_" name="line" value="da1" type="radio" /> 虚线下边线 [ line-da1_b ] </label></div>
-    </div>
+  <div id="LineDemo" class="box line-a_so1"></div>
   ```
+
+  <div class="flex-v">
+    <div>设置边线：<span class="text-c_primary text-s_l">.line-<span id="LineDemoValue">a_so1</span></span></div>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="a_so1" type="radio" /> 实线全边线 [ line-so1 ] </label>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="v_do1" type="radio" /> 点线上下边线 [ line-do1_v ] </label>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="h_do1" type="radio" /> 点线左右边线 [ line-do1_h ] </label>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="l_da1" type="radio" /> 虚线左边线 [ line-da1_l ] </label>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="t_da1" type="radio" /> 虚线上边线 [ line-da1_t ] </label>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="r_da1" type="radio" /> 虚线右边线 [ line-da1_r ] </label>
+    <label><input data-id="LineDemo" data-class="box line-" name="line" value="b_da1" type="radio" /> 虚线下边线 [ line-da1_b ] </label>
+  </div>
 
 - ### 间距 `spac-{key}_{name}`
 
@@ -206,7 +210,6 @@ yoz_grid_query = {
   </div>
   ```
 
-
 - ### 圆角 `radius-{name}`
 
   ```stylus
@@ -220,12 +223,12 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="clearfix">
-    <div class="box bg-c_border float-l spac-mh_20 radius-s"></div>
-    <div class="box bg-c_border float-l spac-mh_20 radius-m"></div>
-    <div class="box bg-c_border float-l spac-mh_20 radius-l"></div>
-    <div class="box bg-c_border float-l spac-mh_20 radius-lr"></div>
-    <div class="box bg-c_border float-l spac-mh_20 radius-c"></div>
+  <div class="flex-h flex-jc_sa">
+    <div class="box bg-c_border radius-s"></div>
+    <div class="box bg-c_border radius-m"></div>
+    <div class="box bg-c_border radius-l"></div>
+    <div class="box bg-c_border radius-lr"></div>
+    <div class="box bg-c_border radius-c"></div>
   </div>
   ```
 
@@ -242,9 +245,9 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="clearfix">
-    <div class="box float-l spac-mh_20 shadow-s"></div>
-    <div class="box float-l spac-mh_20 shadow-m"></div>
+  <div class="flex-h flex-jc_sa">
+    <div class="box shadow-s"></div>
+    <div class="box shadow-m"></div>
   </div>
   ```
 
@@ -341,28 +344,29 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="spac-mb_10">
-    <div>设置文本对齐：</div>
+  <div id="textAlignDemo">
+    君不见黄河之水天上来，奔流到海不复回。<br />
+    君不见高堂明镜悲白发，朝如青丝暮成雪。<br />
+    人生得意须尽欢，莫使金樽空对月。<br />
+    天生我材必有用，千金散尽还复来。<br />
+    烹羊宰牛且为乐，会须一饮三百杯。<br />
+    岑夫子，丹丘生，将进酒，杯莫停。<br />
+    与君歌一曲，请君为我倾耳听。<br />
+    钟鼓馔玉不足贵，但愿长醉不愿醒。<br />
+    古来圣贤皆寂寞，惟有饮者留其名。<br />
+    陈王昔时宴平乐，斗酒十千恣欢谑。<br />
+    主人何为言少钱，径须沽取对君酌。<br />
+    五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。<br />
+  </div>
+  ```
+
+  <div class="flex-v">
+    <div>设置文本对齐：<span class="text-c_primary text-s_l">.text-a_<span id="textAlignDemoValue">l</span></span></div>
     <label><input data-id="textAlignDemo" data-class="text-a_" name="align" value="l" type="radio" /> 文本居左</label>
     <label><input data-id="textAlignDemo" data-class="text-a_" name="align" value="r" type="radio" /> 文本居中</label>
     <label><input data-id="textAlignDemo" data-class="text-a_" name="align" value="c" type="radio" /> 文本居右</label>
     <label><input data-id="textAlignDemo" data-class="text-a_" name="align" value="j" type="radio" /> 文本平整</label>
   </div>
-  <div id="textAlignDemo" >
-    君不见黄河之水天上来，奔流到海不复回。<br/>
-    君不见高堂明镜悲白发，朝如青丝暮成雪。<br/>
-    人生得意须尽欢，莫使金樽空对月。<br/>
-    天生我材必有用，千金散尽还复来。<br/>
-    烹羊宰牛且为乐，会须一饮三百杯。<br/>
-    岑夫子，丹丘生，将进酒，杯莫停。<br/>
-    与君歌一曲，请君为我倾耳听。<br/>
-    钟鼓馔玉不足贵，但愿长醉不愿醒。<br/>
-    古来圣贤皆寂寞，惟有饮者留其名。<br/>
-    陈王昔时宴平乐，斗酒十千恣欢谑。<br/>
-    主人何为言少钱，径须沽取对君酌。<br/>
-    五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。<br/>
-  </div>
-  ```
 
 - ### 省略 `text-clamp_{1~6}`
 
@@ -371,31 +375,31 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-    <div class="spac-mb_10">
-      <div>设置超出省略：</div>
-      <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="1" type="radio" /> 1</label>
-      <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="2" type="radio" /> 2</label>
-      <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="3" type="radio" /> 3</label>
-      <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="4" type="radio" /> 4</label>
-      <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="5" type="radio" /> 5</label>
-      <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="6" type="radio" /> 6</label>
-    </div>
-    <div id="textClampDemo" >
-      君不见黄河之水天上来，奔流到海不复回。<br/>
-      君不见高堂明镜悲白发，朝如青丝暮成雪。<br/>
-      人生得意须尽欢，莫使金樽空对月。<br/>
-      天生我材必有用，千金散尽还复来。<br/>
-      烹羊宰牛且为乐，会须一饮三百杯。<br/>
-      岑夫子，丹丘生，将进酒，杯莫停。<br/>
-      与君歌一曲，请君为我倾耳听。<br/>
-      钟鼓馔玉不足贵，但愿长醉不愿醒。<br/>
-      古来圣贤皆寂寞，惟有饮者留其名。<br/>
-      陈王昔时宴平乐，斗酒十千恣欢谑。<br/>
-      主人何为言少钱，径须沽取对君酌。<br/>
-      五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。<br/>
-    </div>
+  <div id="textClampDemo" class="text-clamp_1">
+    君不见黄河之水天上来，奔流到海不复回。<br />
+    君不见高堂明镜悲白发，朝如青丝暮成雪。<br />
+    人生得意须尽欢，莫使金樽空对月。<br />
+    天生我材必有用，千金散尽还复来。<br />
+    烹羊宰牛且为乐，会须一饮三百杯。<br />
+    岑夫子，丹丘生，将进酒，杯莫停。<br />
+    与君歌一曲，请君为我倾耳听。<br />
+    钟鼓馔玉不足贵，但愿长醉不愿醒。<br />
+    古来圣贤皆寂寞，惟有饮者留其名。<br />
+    陈王昔时宴平乐，斗酒十千恣欢谑。<br />
+    主人何为言少钱，径须沽取对君酌。<br />
+    五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。<br />
+  </div>
   ```
 
+  <div class="flex-v">
+    <div>设置超出省略：<span class="text-c_primary text-s_l">.text-clamp_<span id="textClampDemoValue">1</span></span></div>
+    <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="1" type="radio" /> 超1行省略</label>
+    <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="2" type="radio" /> 超2行省略</label>
+    <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="3" type="radio" /> 超3行省略</label>
+    <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="4" type="radio" /> 超4行省略</label>
+    <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="5" type="radio" /> 超5行省略</label>
+    <label><input data-id="textClampDemo" data-class="text-clamp_" name="clamp" value="6" type="radio" /> 超6行省略</label>
+  </div>
 
 ## 背景
 
@@ -412,8 +416,13 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="box bg-c_primary spac-mv_10">常用背景色</div>
-  <div class="box bg-c_success spac-mv_10">成功背景色</div>
+  <div class="flex-h flex-jc_sa">
+    <div class="box bg-c_primary"></div>
+    <div class="box bg-c_success"></div>
+    <div class="box bg-c_warning"></div>
+    <div class="box bg-c_link"></div>
+    <div class="box bg-c_disabled"></div>
+  </div>
   ```
 
 - ### 填充模式 `bg-m_{key}`
@@ -429,11 +438,14 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div style="background-image: url(./bg.png);" id="bgModeDemo" class="box bg-m_cover"></div>
+  <div style="background-image: url(./bg.png);" id="BgModeDemo" class="box bg-m_cover"></div>
   <div class="spac-mv_20">
-    <label><input data-id="bgModeDemo" data-class="box bg-m_" name="bgMode" value="cover" type="radio" /> cover</label>
-    <label><input data-id="bgModeDemo" data-class="box bg-m_" name="bgMode" value="contain" type="radio" /> contain</label>
-    <label><input data-id="bgModeDemo" data-class="box bg-m_" name="bgMode" value="fill" type="radio" /> fill</label>
+    <div>
+      设置背景填充模式：<span class="text-c_primary text-s_l">.bg-m_<span id="BgModeDemoValue">cover</span></span>
+    </div>
+    <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="cover" type="radio" /> cover</label>
+    <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="contain" type="radio" /> contain</label>
+    <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="fill" type="radio" /> fill</label>
   </div>
   ```
 
@@ -451,12 +463,6 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div>
-    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="h" type="radio" /> flex-h</label>
-    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="h_rtl" type="radio" /> flex-h_rtl</label>
-    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="v" type="radio" /> flex-v</label>
-    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="v_rtl" type="radio" /> flex-v_rtl</label>
-  </div>
   <div id="FlexDirectionDemo" class="flex-h">
     <div class="box bg-c_border spac-m_10">1</div>
     <div class="box bg-c_border spac-m_10">2</div>
@@ -465,6 +471,14 @@ yoz_grid_query = {
     <div class="box bg-c_border spac-m_10">5</div>
   </div>
   ```
+
+  <div>
+    <div>主轴设定：<span class="text-c_primary text-s_l">.flex-<span id="FlexDirectionDemoValue">h</span></span></div>
+    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="h" type="radio" /> flex-h</label>
+    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="h_rtl" type="radio" /> flex-h_rtl</label>
+    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="v" type="radio" /> flex-v</label>
+    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="v_rtl" type="radio" /> flex-v_rtl</label>
+  </div>
 
 - ### 主轴对齐和分布 - `flex-jc_{key}`
 
@@ -480,15 +494,7 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="spac-mb_20">
-    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="fs" type="radio" /> flex-jc_fs[flex-start]</label>
-    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="fe" type="radio" /> flex-jc_fe[flex-end]</label>
-    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="c" type="radio" /> flex-jc_c[center]</label>
-    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="sa" type="radio" /> flex-jc_sa[space-around]</label>
-    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="sb" type="radio" /> flex-jc_sb[space-between]</label>
-    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="se" type="radio" /> flex-jc_se[space-evenly]</label>
-  </div>
-  <div id="FlexJustifyContentDemo" class="flex-h">
+  <div id="FlexJustifyContentDemo" class="flex-h flex-jc_fs">
     <div class="box bg-c_border spac-m_10">1</div>
     <div class="box bg-c_border spac-m_10">2</div>
     <div class="box bg-c_border spac-m_10">3</div>
@@ -496,10 +502,20 @@ yoz_grid_query = {
     <div class="box bg-c_border spac-m_10">5</div>
   </div>
   ```
-  
-  - ### 垂直主轴对齐和分布 `flex-ac_{key}` 
-    
-    > 如果所有flex子项只有一行，则align-content属性是没有任何效果的。
+
+  <div>
+    <div>主轴设定：<span class="text-c_primary text-s_l">.flex-jc_<span id="FlexJustifyContentDemoValue">h</span></span></div>
+    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="fs" type="radio" /> flex-jc_fs[flex-start]</label>
+    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="fe" type="radio" /> flex-jc_fe[flex-end]</label>
+    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="c" type="radio" /> flex-jc_c[center]</label>
+    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="sa" type="radio" /> flex-jc_sa[space-around]</label>
+    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="sb" type="radio" /> flex-jc_sb[space-between]</label>
+    <label><input data-id="FlexJustifyContentDemo" data-class="flex-h flex-jc_" name="flexJustifyContent" value="se" type="radio" /> flex-jc_se[space-evenly]</label>
+  </div>
+
+  - ### 垂直主轴对齐和分布 `flex-ac_{key}`
+
+    > 如果所有 flex 子项只有一行，则 align-content 属性是没有任何效果的。
 
   | key | 对应值        | 说明                                                     |
   | :-- | ------------- | -------------------------------------------------------- |
@@ -513,15 +529,7 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="spac-mb_20">
-    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="fs" type="radio" /> flex-ac_fs[flex-start]</label>
-    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="fe" type="radio" /> flex-ac_fe[flex-end]</label>
-    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="c" type="radio" /> flex-ac_c[center]</label>
-    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="sa" type="radio" /> flex-ac_sa[space-around]</label>
-    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="sb" type="radio" /> flex-ac_sb[space-between]</label>
-    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="se" type="radio" /> flex-ac_se[space-evenly]</label>
-  </div>
-  <div id="FlexAlignContentDemo" class="flex-h  flex-w_w " style="background:rgba(0,0,0,0.2); height:500px; width:300px;">
+  <div id="FlexAlignContentDemo" class="flex-h flex-w_w flex-ac_fs" style="background:rgba(0,0,0,0.2); height:500px; width:300px;">
     <div class="box bg-c_border spac-m_10">1</div>
     <div class="box bg-c_border spac-m_10">2</div>
     <div class="box bg-c_border spac-m_10">3</div>
@@ -529,6 +537,16 @@ yoz_grid_query = {
     <div class="box bg-c_border spac-m_10">5</div>
   </div>
   ```
+
+  <div class="flex-v">
+    <div>垂直主轴对齐和分布：<span class="text-c_primary text-s_l">.flex-ac_<span id="FlexAlignContentDemoValue">fs</span></span></div>
+    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="fs" type="radio" /> flex-ac_fs[flex-start]</label>
+    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="fe" type="radio" /> flex-ac_fe[flex-end]</label>
+    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="c" type="radio" /> flex-ac_c[center]</label>
+    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="sa" type="radio" /> flex-ac_sa[space-around]</label>
+    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="sb" type="radio" /> flex-ac_sb[space-between]</label>
+    <label><input data-id="FlexAlignContentDemo" data-class="flex-h flex-w_w flex-ac_" name="flexAlignContent" value="se" type="radio" /> flex-ac_se[space-evenly]</label>
+  </div>
 
 - ### 主轴垂直方向对齐 `flex-ai_{key}`
 
@@ -542,12 +560,6 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div class="spac-mb_20">
-    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="st" type="radio" /> flex-ai_st[stretch]</label>
-    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="s" type="radio" /> flex-ai_s[start]</label>
-    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="e" type="radio" /> flex-ai_e[end]</label>
-    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="c" type="radio" /> flex-ai_c[center]</label>
-  </div>
   <div id="FlexAliginItemsDemo" class="flex-h">
     <div style="min-height:100px; height:auto;" class="box bg-c_border spac-mr_10 spac-mb_10">1</div>
     <div style="min-height:120px; height:auto;" class="box bg-c_border spac-mr_10 spac-mb_10">2</div>
@@ -557,22 +569,25 @@ yoz_grid_query = {
   </div>
   ```
 
+  <div class="flex-v">
+    <div>主轴垂直方向对齐：<span class="text-c_primary text-s_l">.flex-ai_<span id="FlexAliginItemsDemoValue">st</span></span></div>
+    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="st" type="radio" /> flex-ai_st[stretch]</label>
+    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="s" type="radio" /> flex-ai_s[start]</label>
+    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="e" type="radio" /> flex-ai_e[end]</label>
+    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="c" type="radio" /> flex-ai_c[center]</label>
+  </div>
+
 - ### 容器换行 `flex-w_{key}`
 
-  | key | 对应值       | 说明     |
-  | :-- | ------------ | -------- |
-  | n   | nowrap       | 不换行   |
-  | w   | wrap         | 换行     |
-  | w_rtl  | wrap-reverse | 反转换行 |
+  | key   | 对应值       | 说明     |
+  | :---- | ------------ | -------- |
+  | n     | nowrap       | 不换行   |
+  | w     | wrap         | 换行     |
+  | w_rtl | wrap-reverse | 反转换行 |
 
   #### 示例
 
   ```html
-  <div class="spac-mb_20">
-    <label><input data-id="flexWrapDemo" data-class="bg-c_sub_text flex-h flex-w_" name="flexWrap" value="n" type="radio" /> flex-w_n[nowrap]</label>
-    <label><input data-id="flexWrapDemo" data-class="bg-c_sub_text flex-h flex-w_" name="flexWrap" value="w" type="radio" /> flex-w_w[wrap]</label>
-    <label><input data-id="flexWrapDemo" data-class="bg-c_sub_text flex-h flex-w_" name="flexWrap" value="w_rtl" type="radio" /> flex-w_w_rtl[wrap-reverse]</label>
-  </div>
   <div id="flexWrapDemo" class="bg-c_sub_text flex-h">
     <div class="box bg-c_border spac-m_10">1</div>
     <div class="box bg-c_border spac-m_10">2</div>
@@ -592,8 +607,15 @@ yoz_grid_query = {
   </div>
   ```
 
+  <div class="flex-v">
+    <div>容器换行设定：<span class="text-c_primary text-s_l">.flex-w_<span id="flexWrapDemoValue">n</span></span></div>
+    <label><input data-id="flexWrapDemo" data-class="bg-c_sub_text flex-h flex-w_" name="flexWrap" value="n" type="radio" /> flex-w_n[nowrap]</label>
+    <label><input data-id="flexWrapDemo" data-class="bg-c_sub_text flex-h flex-w_" name="flexWrap" value="w" type="radio" /> flex-w_w[wrap]</label>
+    <label><input data-id="flexWrapDemo" data-class="bg-c_sub_text flex-h flex-w_" name="flexWrap" value="w_rtl" type="radio" /> flex-w_w_rtl[wrap-reverse]</label>
+  </div>
+
 - ### 伸展填充 `flex-fill`
-  
+
   #### 示例
 
   ```html
@@ -604,70 +626,133 @@ yoz_grid_query = {
   ```
 
 ## 栅格化
-  - ### 栅格化实现 `row[-flex]`
-    
-    > 通过浮动或弹性盒子实现栅格化系统
 
-    #### 示例
+- ### 栅格化实现 `row[-flex]`
 
-    ```html
-    <div>float实现grid  <b class="text-c_primary">.row</b></div>
-    <div class="row gutter-s">
-      <div class="col-6 bg-c_border">.col-6</div>
-      <div class="col-6 bg-c_border">.col-6</div>
-      <div class="col-ml_6 col-6 col-g bg-c_border">.col-6.col-ml_6</div>
-      <!-- <div class="col-ml_2 bg-c_border">伸展填充</div> -->
-    </div>
-    <div class="spac-mt_20">flex实现grid  <b class="text-c_primary">.row-flex</b></div>
-    <div class="row-flex gutter-s">
-      <div class="col-6 bg-c_border">.col-6</div>
-      <div class="col-ml_6 col-6 col-g bg-c_border">.col-6.col-ml_6</div>
-      <div class="col-6 bg-c_border">.col-6</div>
-    </div>
-    ```
-  - ### 栅格间距 `gutter-{name}`
-  
-    ```stylus
-      yoz_grid_gutter = {
-        name: [gutter],
-      }; 
-    ```
+  > 通过浮动或弹性盒子实现栅格化系统
+
+  #### 示例
+
+  ```html
+  <div>float实现grid <b class="text-c_primary">.row</b></div>
+  <div class="row gutter-s">
+    <div class="col-6 bg-c_border">.col-6</div>
+    <div class="col-6 bg-c_border">.col-6</div>
+    <div class="col-ml_6 col-6 col-g bg-c_border">.col-6.col-ml_6</div>
+    <!-- <div class="col-ml_2 bg-c_border">伸展填充</div> -->
+  </div>
+  <div class="spac-mt_20">flex实现grid <b class="text-c_primary">.row-flex</b></div>
+  <div class="row-flex gutter-s">
+    <div class="col-6 bg-c_border">.col-6</div>
+    <div class="col-ml_6 col-6 col-g bg-c_border">.col-6.col-ml_6</div>
+    <div class="col-6 bg-c_border">.col-6</div>
+  </div>
+  ```
+
+- ### 栅格间距 `gutter-{name}`
+
+  ```stylus
+    yoz_grid_gutter = {
+      name: [gutter],
+    };
+  ```
+
   > 根据变量`yoz_line`中成员生成，默认值可查看 [自定义变量](#自定义变量)
 
-    #### 示例
+  #### 示例
 
-    ```html
-    <div>变量设定的 [s] 间距 <b class="text-c_primary">.gutter-s</b></div>
-    <div class="row gutter-s line-a_so1 spac-pv_10">
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-    </div>
-    <div class="spac-mt_20">变量设定的 [m] 间距 <b class="text-c_primary">.gutter-m</b></div>
-    <div class="row gutter-m line-a_so1 spac-pv_10">
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-    </div>
-    ```
+  ```html
+  <div>变量设定的 [s] 间距 <b class="text-c_primary">.gutter-s</b></div>
+  <div class="row gutter-s line-a_so1 spac-pv_10">
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+  </div>
+  <div class="spac-mt_20">变量设定的 [m] 间距 <b class="text-c_primary">.gutter-m</b></div>
+  <div class="row gutter-m line-a_so1 spac-pv_10">
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+  </div>
+  ```
 
-  - ### 栅格块 `col-${media}-{0~num}`
-  
-    ```stylus
-      yoz_grid_col = [num];//数字，默认24 
-    ```
+- ### 栅格块 `col-{0~num}`
+
+  ```stylus
+      yoz_grid_col = [num];//数字，默认24
+
+  ```
+
   > 根据变量`yoz_grid_col`分割，默认值可查看 [自定义变量](#自定义变量)
 
-    #### 示例
+  #### 示例
 
-    ```html
-    <div class="row line-a_so1 spac-p_10">
-      <div class="col-0"><div class="line-a_so1">.col-0</div></div>
-      <div class="col-2"><div class="line-a_so1">.col-2</div></div>
-      <div class="col-4"><div class="line-a_so1">.col-4</div></div>
-      <div class="col-6"><div class="line-a_so1">.col-6</div></div>
-      <div class="col-12"><div class="line-a_so1">.col-12</div></div>
+  ```html
+  <div class="row line-a_so1 spac-p_10">
+    <div class="col-0"><div class="line-a_so1">.col-0</div></div>
+    <div class="col-2"><div class="line-a_so1">.col-2</div></div>
+    <div class="col-4"><div class="line-a_so1">.col-4</div></div>
+    <div class="col-6"><div class="line-a_so1">.col-6</div></div>
+    <div class="col-12"><div class="line-a_so1">.col-12</div></div>
+  </div>
+  ```
+
+- ### 栅格块偏移 `col-{ml|mr}_{0~num}`
+
+  | key | 说明   |
+  | :-- | ------ |
+  | ml  | 左占位 |
+  | mr  | 右占位 |
+
+  #### 示例
+
+  ```html
+  <div class="row line-a_so1 spac-p_10">
+    <div class="col-0"><div class="line-a_so1">.col-0</div></div>
+    <div class="col-4"><div class="line-a_so1">.col-4</div></div>
+    <div class="col-2"><div class="line-a_so1">.col-2</div></div>
+    <div class="col-4"><div class="line-a_so1">.col-4</div></div>
+    <div class="col-10 col-ml_4"><div class="line-a_so1">.col-10.col-ml_4</div></div>
+    <div class="col-6 col-mr_6"><div class="line-a_so1">.col-12.col-mr_2</div></div>
+    <div class="col-12"><div class="line-a_so1">.col-12</div></div>
+  </div>
+  ```
+
+- ### 响应式栅格块 
+  - `col-{media}-{0~num}`
+  - `col-{media}-[ml|mr]_{0~num}`
+
+  ```stylus
+    yoz_grid_query = { // 屏幕值数值大在上，数值最小的应用max-width
+      media: 'min-width: [screenWidth]',
+      media: 'max-width: [screenWidth]',
+    };
+  ```
+
+  > 根据变量`yoz_grid_col`分割，默认值可查看 [自定义变量](#自定义变量)
+
+  #### 示例
+
+  ```htm
+  <div class="row gutter-s">
+    <div class="col-ph-24 col-pa-0 col-0"><div class="line-a_so1 text-clamp_1">.col-ph-24.col-pa-0.col-0</div></div>
+    <div class="col-ph-12 col-ph-ml_12 col-pa-24 col-2"><div class="line-a_so1 text-clamp_1">.col-ph-12.col-ph-ml_12.col-pa-24.col-2</div></div>
+    <div class="col-ph-12 col-ph-mr_12 col-pa-24 col-4"><div class="line-a_so1 text-clamp_1">.col-ph-12.col-ph-mr_12.col-pa-24.col-4</div></div>
+    <div class="col-ph-24 col-pa-12 col-6"><div class="line-a_so1 text-clamp_1">.col-ph-24.col-pa-12.col-6</div></div>
+    <div class="col-ph-24 col-pa-12 col-12"><div class="line-a_so1 text-clamp_1">.col-ph-24.col-pa-12.col-12</div></div>
+  </div>
+  ```
+
+  <div class="row">
+    <div id="GridMediaDemo" class="col-24">
+      <iframe style="height: 200px" src="./media.html"></iframe>
     </div>
-    ```
+  </div>
+
+  <div class="flex-v">
+    <label><input data-id="GridMediaDemo" data-class="col-" name="gridMedia" value="24" type="radio" /> 电脑</label>
+    <label><input data-id="GridMediaDemo" data-class="col-" name="gridMedia" value="12" type="radio" /> 平板</label>
+    <label><input data-id="GridMediaDemo" data-class="col-" name="gridMedia" value="8" type="radio" /> 手机</label>
+  </div>

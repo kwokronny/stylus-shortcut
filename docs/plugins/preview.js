@@ -7,6 +7,7 @@ function previewPlugins(hook, vm) {
     document.querySelectorAll("input[type=radio]").forEach(function (radio) {
       radio.onchange = function (e) {
         document.getElementById(e.target.dataset.id).className = e.target.dataset.class + e.target.value;
+        document.getElementById(e.target.dataset.id + "Value").innerHTML = e.target.value;
       };
     });
   });

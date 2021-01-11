@@ -1,6 +1,6 @@
 
 media($class = '') {
-	$class += '_' unless ($class == '');
+	$class += '-' unless ($class == '');
 
 	&col-{$class}0 {
 		display: none;
@@ -61,13 +61,11 @@ media($class = '') {
 		}
 	}
 
+	media();
+
 	for $k, $v in yoz_grid_query {
-		if ($v == '') {
-			media();
-		} else {
-			@media only screen and ({$v}: ) {
-				media($k);
-			}
+		@media screen and ({$v} ) {
+			media($k);
 		}
 	}
 }
