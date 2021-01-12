@@ -438,7 +438,7 @@ yoz_grid_query = {
   #### 示例
 
   ```html
-  <div style="background-image: url(./bg.png);" id="BgModeDemo" class="box bg-m_cover"></div>
+  <div style="background-image: url(./img/bg.png);" id="BgModeDemo" class="box bg-m_cover"></div>
   <div class="spac-mv_20">
     <div>
       设置背景填充模式：<span class="text-c_primary text-s_l">.bg-m_<span id="BgModeDemoValue">cover</span></span>
@@ -453,12 +453,12 @@ yoz_grid_query = {
 
 - ### 主轴设定 `flex-{key}`
 
-  | key   | 对应值         | 说明         |
-  | :---- | -------------- | ------------ |
-  | h     | row            | 水平方向     |
-  | h_rtl | row-reverse    | 水平方向反转 |
-  | v     | column         | 垂直方向     |
-  | v_rtl | column-reverse | 垂直方向反转 |
+  | key | 对应值         | 说明         |
+  | :-- | -------------- | ------------ |
+  | h   | row            | 水平方向     |
+  | hr  | row-reverse    | 水平方向反转 |
+  | v   | column         | 垂直方向     |
+  | vr  | column-reverse | 垂直方向反转 |
 
   #### 示例
 
@@ -475,9 +475,9 @@ yoz_grid_query = {
   <div>
     <div>主轴设定：<span class="text-c_primary text-s_l">.flex-<span id="FlexDirectionDemoValue">h</span></span></div>
     <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="h" type="radio" /> flex-h</label>
-    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="h_rtl" type="radio" /> flex-h_rtl</label>
+    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="hr" type="radio" /> flex-hr</label>
     <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="v" type="radio" /> flex-v</label>
-    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="v_rtl" type="radio" /> flex-v_rtl</label>
+    <label><input data-id="FlexDirectionDemo" data-class="flex-" name="flex-" value="vr" type="radio" /> flex-vr</label>
   </div>
 
 - ### 主轴对齐和分布 - `flex-jc_{key}`

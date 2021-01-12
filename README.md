@@ -2,6 +2,8 @@
 
 stylus-shortcut 可以加速编写 CSS，通过 stylus 中 mixin 的功能，将样式常用组合合并汇以简单一句，减少代码的编写量；并通过stylus循环将常用主题变量生成常用的样式规则，可快捷使用。
 
+[] | [说明文档](https://kwokronny.top/stylus-shortcut-docs/)
+
 ## 开发意图
 通过问答的方式介绍此项目可为你解决的困扰
 1. Q: 项目设计稿无相似的 UI 样式库直接应用

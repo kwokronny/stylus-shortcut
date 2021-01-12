@@ -1,0 +1,23 @@
+// @import './test/custom.styl';
+@import './src/mixin.styl';
+@import './src/shortcut.styl';
+
+.demo {
+	border: 1px solid #f2f2f2;
+	padding: 10px;
+	l-rel: 0 0;
+	l-mv: 30px;
+
+	.box {
+		l-wh: 100px 100px;
+		color: yoz_color.sub_text;
+		text-align: center;
+	}
+
+	&:before {
+		content: 'Result:';
+		t-fl: 12px 20px;
+		display: block;
+		l-abs: 0 -20px;
+	}
+}

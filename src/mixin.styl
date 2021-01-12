@@ -121,19 +121,34 @@ a-loop(t = infinite, re = false) {
 // #endregion
 
 // #region flex
-f-dir(dir, jc = normal, ai = normal, w = nowrap) {
-  display: flex;
-  flex-direction: dir;
-  justify-content: jc;
-  align-items: ai;
-  flex-wrap: w;
-}
 
-f-w(dir, jc = normal, ai = normal, w = nowrap) {
+// quick set about flex attribute
+f-lay(dir, jc = normal, ai = normal, w = nowrap) {
+	$flex_direction = {
+		h: row,
+		hr: row-reverse,
+		v: column,
+		vr: column-reverse
+	};
+  $flex_content = {
+    fs: flex-start,
+    c: center,
+    fe: flex-end,
+    sa: space-around,
+    se: space-evenly,
+    sb: space-between
+  };
+  $flex_items = {
+    s: start,
+    c: center,
+    b: baseline,
+    e: end,
+    st: stretch
+  };
   display: flex;
-  flex-direction: dir;
-  justify-content: jc;
-  align-items: ai;
+  flex-direction: $flex_direction[dir];
+  justify-content: $flex_content[jc];
+  align-items: $flex_items[ai];
   flex-wrap: w;
 }
 // #endregion
