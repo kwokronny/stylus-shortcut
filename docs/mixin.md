@@ -2,7 +2,7 @@
 
 ## 使用方式
 
-如 vue-cli@3 配置示例，在 stylus-loader 中配置 import 做到全局引入
+如 vue-cli@3 配置示例，在 stylus-loader 中配置 import 全局引入
 
 ```javascript
 //vue.config.js
@@ -25,7 +25,7 @@ modules.export={
 
 ## 布局
 
-- **l-wh(width, height, round)**
+- ### l-wh(width, height, round)
 
   > 设置宽高
 
@@ -53,161 +53,164 @@ modules.export={
   }
   ```
 
-- **l-mh(left, right)**
+- ### 间距
+  - #### l-mh(left, right)
 
-  > 设置水平外间距
+    > 设置水平外间距
 
-  入参，示例同下
+    入参，示例同下
 
-- **l-ph(left, right)**
+  - #### l-ph(left, right)
 
-  > 设置垂直内间距
+    > 设置垂直内间距
 
-  | 入参名 | 值格式 | 是否可空 | 默认值    |
-  | :----- | :----- | :------- | :-------- |
-  | left   | unit   | 否       |           |
-  | right  | unit   | 是       | 入参 left |
+    | 入参名 | 值格式 | 是否可空 | 默认值    |
+    | :----- | :----- | :------- | :-------- |
+    | left   | unit   | 否       |           |
+    | right  | unit   | 是       | 入参 left |
 
-  Example:
+    Example:
 
-  ```stylus
-  .style {
-    l-mh: 50px 0;
-    l-ph: 50px 0;
-  }
-  .style1 {
-    l-mh: 50px;
-    l-ph: 50px;
-  }
-  ```
+    ```stylus
+    .style {
+      l-mh: 50px 0;
+      l-ph: 50px 0;
+    }
+    .style1 {
+      l-mh: 50px;
+      l-ph: 50px;
+    }
+    ```
 
-  Result:
+    Result:
 
-  ```css
-  .style {
-    margin-left: 50px;
-    margin-right: 0;
+    ```css
+    .style {
+      margin-left: 50px;
+      margin-right: 0;
 
-    padding-left: 50px;
-    padding-right: 0;
-  }
-  .style1 {
-    margin-left: 50px;
-    margin-right: 50px;
+      padding-left: 50px;
+      padding-right: 0;
+    }
+    .style1 {
+      margin-left: 50px;
+      margin-right: 50px;
 
-    padding-left: 50px;
-    padding-right: 0;
-  }
-  ```
+      padding-left: 50px;
+      padding-right: 0;
+    }
+    ```
 
-- **l-mv(left, right)**
+  - #### l-mv(left, right)
 
-  > 设置垂直外间距
+    > 设置垂直外间距
 
-  入参，示例同下
+    入参，示例同下
 
-- **l-pv(top, bottom)**
+  - #### l-pv(top, bottom)
 
-  > 设置垂直内间距
+    > 设置垂直内间距
 
-  | 入参名 | 值格式 | 是否可空 | 默认值   |
-  | :----- | :----- | :------- | :------- |
-  | top    | unit   | 否       |          |
-  | bottom | unit   | 是       | 入参 top |
+    | 入参名 | 值格式 | 是否可空 | 默认值   |
+    | :----- | :----- | :------- | :------- |
+    | top    | unit   | 否       |          |
+    | bottom | unit   | 是       | 入参 top |
 
-  Example:
+    Example:
 
-  ```stylus
-  .style {
-    l-mv: 50px 0;
-    l-pv: 50px 0;
-  }
-  .style1 {
-    l-mv: 50px;
-    l-pv: 50px;
-  }
-  ```
+    ```stylus
+    .style {
+      l-mv: 50px 0;
+      l-pv: 50px 0;
+    }
+    .style1 {
+      l-mv: 50px;
+      l-pv: 50px;
+    }
+    ```
 
-  Result:
+    Result:
 
-  ```css
-  .style {
-    margin-top: 50px;
-    margin-bottom: 0;
+    ```css
+    .style {
+      margin-top: 50px;
+      margin-bottom: 0;
 
-    padding-top: 50px;
-    padding-bottom: 0;
-  }
-  .style1 {
-    margin-top: 50px;
-    margin-bottom: 50px;
+      padding-top: 50px;
+      padding-bottom: 0;
+    }
+    .style1 {
+      margin-top: 50px;
+      margin-bottom: 50px;
 
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  ```
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    ```
 
-- **l-abs(left, top, rtl)**
+- ### 定位
 
-  > 快速设置绝对定位
+  - #### l-abs(left, top, dir)
 
-  入参，示例同下
+    > 快速设置绝对定位
 
-- **l-fix(left, top, rtl)**
+    入参，示例同下
 
-  > 快速设置固定定位
+  - #### l-fix(left, top, dir)
 
-  入参，示例同下
+    > 快速设置固定定位
 
-- **l-rel(left, top, rtl)**
+    入参，示例同下
 
-  > 快速设置相对定位
+  - #### l-rel(left, top, dir)
 
-  通常定位会皆由 `x`,`y` 两个值完成元素在视图中的定位，故增加第三个值 `dir` 完成相对于矩形中四个角的 `x` 与 `y` 。
+    > 快速设置相对定位
 
-  | 入参名 | 值格式         | 是否可空 | 默认值 |
-  | :----- | :------------- | :------- | :----- |
-  | x      | unit           | 是       | auto   |
-  | y      | unit           | 是       | auto   |
-  | dir    | lt\|rt\|lb\|rb | 是       | lt     |
+    通常定位会皆由 `x`,`y` 两个值完成元素在视图中的定位，故增加第三个值 `dir` 完成相对于矩形中四个角的 `x` 与 `y` 。
 
-  Example:
+    | 入参名 | 值格式         | 是否可空 | 默认值 |
+    | :----- | :------------- | :------- | :----- |
+    | x      | unit           | 是       | auto   |
+    | y      | unit           | 是       | auto   |
+    | dir    | lt\|rt\|lb\|rb | 是       | lt     |
 
-  ```stylus
-  .style {
-    l-abs: 50px 0 'rb';
-  }
-  .style1 {
-    l-rel: 50px 0 'lb';
-  }
-  .style2 {
-    l-fix: 50px 50px
-  }
-  ```
+    Example:
 
-  Result:
+    ```stylus
+    .style {
+      l-abs: 50px 0 'rb';
+    }
+    .style1 {
+      l-rel: 50px 0 'lb';
+    }
+    .style2 {
+      l-fix: 50px 50px
+    }
+    ```
 
-  ```css
-  .style {
-    position: absolute;
-    right: 50px;
-    bottom: 0;
-  }
-  .style1 {
-    position: relative;
-    left: 50px;
-    bottom: 0;
-  }
-  .style2 {
-    position: fixed;
-    left: 50px;
-    top: 50px;
-  }
-  ```
+    Result:
+
+    ```css
+    .style {
+      position: absolute;
+      right: 50px;
+      bottom: 0;
+    }
+    .style1 {
+      position: relative;
+      left: 50px;
+      bottom: 0;
+    }
+    .style2 {
+      position: fixed;
+      left: 50px;
+      top: 50px;
+    }
+    ```
 
 ## 文本
 
-- **t-fl(size, lineHeight, align)**
+- ### t-fl(size, lineHeight, color)
 
   > 快速设置以下属性 font-size, line-height, color
 
@@ -242,7 +245,7 @@ modules.export={
   }
   ```
 
-- **t-clamp(lineNum)**
+- ### t-clamp(lineNum)
 
   > 设置超出省略, lineNum 为 2 后需注意兼容情况。
 
@@ -270,14 +273,16 @@ modules.export={
     white-space: nowrap;
   }
   .style1 {
+    overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
   ```
 
 ## 样式
 
-- **s-bg(bg, size, position, repeat)**
+- ### s-bg(bg, size, position, repeat)
   > 快捷设置 background
 
 | 入参名   | 值格式                     | 是否可空 | 默认值    |
@@ -317,19 +322,19 @@ Result:
 
 ## 动画
 
-- **a-eff(name, duration, delay)**
+- ### a-eff(name, duration, delay)
 
-  > 快捷设置动效的 name,duration 和 delay
+> 快捷设置动效的 name,duration 和 delay
 
-  | 入参名   | 值格式    | 是否可空 | 默认值 |
-  | :------- | :-------- | :------- | :----- |
-  | name     | string    | 否       |        |
-  | duration | time unit | 否       |        |
-  | delay    | time unit | 是       | 0s     |
+| 入参名   | 值格式    | 是否可空 | 默认值 |
+| :------- | :-------- | :------- | :----- |
+| name     | string    | 否       |        |
+| duration | time unit | 否       |        |
+| delay    | time unit | 是       | 0s     |
 
-  示例同下
+示例同下
 
-- **a-loop(count)**
+- ### a-loop(count)
 
   > 快捷设置动画的播放次数及结束后是否逆向播放
 
