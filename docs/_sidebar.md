@@ -1,4 +1,5 @@
 * [项目说明](README)
+* [更新日志](CHANGELOG.md)
 * [混合便捷规则](mixin)
 * [内置样式](shortcut)
-* [赞助](donate)
+* [赞助](donate)

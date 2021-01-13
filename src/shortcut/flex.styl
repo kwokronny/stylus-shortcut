@@ -45,10 +45,9 @@
 	}
 
 	$flex_items = {
-		s: start,
+		fs: flex-start,
 		c: center,
-		b: baseline,
-		e: end,
+		fe: flex-end,
 		st: stretch
 	};
 
@@ -56,10 +55,6 @@
 
 		&-ai_{$name} {
 			align-items: $value;
-		}
-
-		&-js_{$name} {
-			justify-self: $value;
 		}
 
 		&-as_{$name} {

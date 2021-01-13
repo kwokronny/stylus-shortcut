@@ -5,7 +5,7 @@
   "main": "src/index.styl",
   "scripts": {
     "test": "node test/test.js",
-    "doc-stylus": "node docs/stylus/build-doc-stylus.js"
+    "docs": "node script/docs.js"
   },
   "author": "kwokronny",
   "license": "ISC",

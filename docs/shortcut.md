@@ -14,12 +14,16 @@
 
 ```stylus
 // 自定义变量模板
-yoz_prefix = '';
 /**
-* 常用颜色
-* default variable by color
-*/
-yoz_color = {
+ * 样式生成前缀，默认不添加前缀
+ * 巧合下有冲突情况下，可为内置的样式规则增加前缀
+ */
+yoz_prefix ?= '';
+/**
+ * 常用颜色
+ * default variable by color
+ */
+yoz_color ?= {
   primary: #1890ff,
   link: #1890ff,
   success: #52c41a,
@@ -32,66 +36,83 @@ yoz_color = {
   border: #e8eaec
 };
 /**
-* 常用线变量
-* default variable by line
-*/
-yoz_line = {
+ * 常用线变量
+ * default variable by line
+ */
+yoz_line ?= {
   so1: 1px solid yoz_color.border,
   do1: 1px dotted yoz_color.border,
   da1: 1px dashed yoz_color.border
 };
 /**
-* 常用阴影变量
-* default variable by shadow
-*/
-yoz_shadow = {
+ * 常用圆角变量
+ * default variable by border radius
+ */
+yoz_radius ?= {
+  s: 4px,
+  m: 8px,
+  l: 20px,
+  lr: 20px 0 0 0,
+  c: 100%
+};
+/**
+ * 常用阴影变量
+ * default variable by shadow
+ */
+yoz_shadow ?= {
   s: 0 0 2px rgba(0, 0, 0, 0.6),
   m: 0 0 5px rgba(0, 0, 0, 0.6)
 };
 /**
-* 常用字体变量
-* default variable by font-family
-*/
-yoz_font_family = {
+ * 常用字体变量
+ * default variable by font-family
+ */
+yoz_font_family ?= {
   sans: unquote('-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif'),
   serif: unquote('serif')
 };
 /**
-* 常用字体大小与行距变量
-* default variable by font-size and line-height
-*/
-yoz_font_size = {
+ * 常用字体大小与行距变量
+ * default variable by font-size and line-height
+ */
+yoz_font_size ?= {
   s: 12px 20px,
   m: 14px 22px,
   b: 16px 24px,
   l: 18px 28px
 };
 /**
-* 常用间距变量
-* default variable by spacing
-*/
-yoz_spacing = {
+ * 常用间距变量
+ * default variable by spacing
+ */
+yoz_spacing ?= {
   '5': 5px,
   '10': 10px,
   '20': 20px,
-  '30': 30px
+  '30': 30px,
+  a: auto
 };
 /**
-* 默认栅格化相关变量
-* default variable by grid system
-*/
-yoz_grid_col = 24; // 自定义栅格数
-yoz_grid_query = {
-  normal: '',
-  xs: 'max-width: 320px',
-  sm: 'min-width: 768px',
-  md: 'min-width: 992px',
-  lg: 'min-width: 1200px',
-  xl: 'min-width: 1920px'
+ * 默认栅格化相关变量
+ * default variable by grid system
+ */
+  // 自定义栅格数
+yoz_grid_col ?= 24;
+// 栅格化 栅格间距
+yoz_grid_gutter ?= {
+  s: 10px,
+  m: 20px
+};
+// 栅格化 响应式界限
+yoz_grid_query ?= {
+  l: 'max-width: 1200px', //超大屏 large
+  m: 'max-width: 992px', //电脑 middle 1000以上基本为PC显示器，则用大中小等英文简写
+  t: 'max-width: 768px', //平板 tablets
+  p: 'max-width: 540px', //手机 phone
 };
 ```
 
- 复制修改  变量模板后在 shortcut.styl 前引用即可
+复制修改 变量模板后在 shortcut.styl 前引用即可
 
 ```stylus
 @import "your-variable-file.styl" //
@@ -100,7 +121,7 @@ yoz_grid_query = {
 
 可在 `stylusOptions` 配置中全局引用，方便项目中多样式文件可直接应用变量
 
-如: vue-cli@3 配置
+如: vue-cli@3 配置
 
 ```javascript
   //vue.config.js
@@ -550,12 +571,12 @@ yoz_grid_query = {
 
 - ### 主轴垂直方向对齐 `flex-ai_{key}`
 
-  | key | 对应值  | 说明                                         |
-  | :-- | ------- | -------------------------------------------- |
-  | s   | start   | 从行首起始位置开始排列                       |
-  | c   | center  | 居中排列                                     |
-  | e   | end     | 从行尾位置开始排列                           |
-  | st  | stretch | 均匀排列每个元素，每个元素周围分配相同的空间 |
+  | key | 对应值     | 说明                                         |
+  | :-- | ---------- | -------------------------------------------- |
+  | fs  | flex-start | 从行首起始位置开始排列                       |
+  | c   | center     | 居中排列                                     |
+  | fe  | flex-end   | 从行尾位置开始排列                           |
+  | st  | stretch    | 均匀排列每个元素，每个元素周围分配相同的空间 |
 
   #### 示例
 
@@ -572,9 +593,38 @@ yoz_grid_query = {
   <div class="flex-v">
     <div>主轴垂直方向对齐：<span class="text-c_primary text-s_l">.flex-ai_<span id="FlexAliginItemsDemoValue">st</span></span></div>
     <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="st" type="radio" /> flex-ai_st[stretch]</label>
-    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="s" type="radio" /> flex-ai_s[start]</label>
-    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="e" type="radio" /> flex-ai_e[end]</label>
+    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="fs" type="radio" /> flex-ai_s[flex-start]</label>
+    <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="fe" type="radio" /> flex-ai_e[flex-end]</label>
     <label><input data-id="FlexAliginItemsDemo" data-class="flex-h flex-ai_" name="flexAlignItems" value="c" type="radio" /> flex-ai_c[center]</label>
+  </div>
+
+- ### 子项主轴垂直方向对齐 `flex-as_{key}`
+
+  | key | 对应值     | 说明                                         |
+  | :-- | ---------- | -------------------------------------------- |
+  | fs  | flex-start | 从行首起始位置开始排列                       |
+  | c   | center     | 居中排列                                     |
+  | fe  | flex-end   | 从行尾位置开始排列                           |
+  | st  | stretch    | 均匀排列每个元素，每个元素周围分配相同的空间 |
+
+  #### 示例
+
+  ```html
+  <div class="flex-h flex-ai_s">
+    <div id="FlexAliginSelfDemo" style="min-height:100px; height:auto;" class="box bg-c_primary spac-mr_10 spac-mb_10">1</div>
+    <div style="min-height:120px; height:auto;" class="box bg-c_border spac-mr_10 spac-mb_10">2</div>
+    <div style="min-height:150px; height:auto;" class="box bg-c_border spac-mr_10 spac-mb_10">3</div>
+    <div style="min-height:160px; height:auto;" class="box bg-c_border spac-mr_10 spac-mb_10">4</div>
+    <div style="min-height:100px; height:auto;" class="box bg-c_border spac-mr_10 spac-mb_10">5</div>
+  </div>
+  ```
+
+  <div class="flex-v">
+    <div>子项主轴垂直方向对齐：<span class="text-c_primary text-s_l">.flex-ai_<span id="FlexAliginSelfDemoValue">st</span></span></div>
+    <label><input data-id="FlexAliginSelfDemo" data-class="box bg-c_primary spac-mr_10 spac-mb_10 flex-as_" name="flexAlignItems" value="st" type="radio" /> flex-as_st[stretch]</label>
+    <label><input data-id="FlexAliginSelfDemo" data-class="box bg-c_primary spac-mr_10 spac-mb_10 flex-as_" name="flexAlignItems" value="fs" type="radio" /> flex-as_s[flex-start]</label>
+    <label><input data-id="FlexAliginSelfDemo" data-class="box bg-c_primary spac-mr_10 spac-mb_10 flex-as_" name="flexAlignItems" value="fe" type="radio" /> flex-as_e[flex-end]</label>
+    <label><input data-id="FlexAliginSelfDemo" data-class="box bg-c_primary spac-mr_10 spac-mb_10 flex-as_" name="flexAlignItems" value="c" type="radio" /> flex-as_c[center]</label>
   </div>
 
 - ### 容器换行 `flex-w_{key}`
@@ -726,7 +776,7 @@ yoz_grid_query = {
   - `col-{media}-[ml|mr]_{0~num}`
 
   ```stylus
-    yoz_grid_query = { // 屏幕值数值大在上，数值最小的应用max-width
+    yoz_grid_query = { // 因生成顺序会影响响应式规则的优先级，所以需要按屏幕宽度由大到小排列，数值最小的应用 max-width
       media: 'min-width: [screenWidth]',
       media: 'max-width: [screenWidth]',
     };

@@ -42,6 +42,35 @@ l-wh(w, h = w, r = false) {
   }
 }
 
+// quick set about flex attribute
+l-flex(dir, jc = fs, ai = s, w = nowrap) {
+	$flex_direction = {
+		h: row,
+		hr: row-reverse,
+		v: column,
+		vr: column-reverse
+	};
+  $flex_content = {
+    fs: flex-start,
+    c: center,
+    fe: flex-end,
+    sa: space-around,
+    se: space-evenly,
+    sb: space-between
+  };
+  $flex_items = {
+		fs: flex-start,
+		c: center,
+		fe: flex-end,
+		st: stretch
+  };
+  display: flex;
+  flex-direction: $flex_direction[dir];
+  justify-content: $flex_content[jc];
+  align-items: $flex_items[ai];
+  flex-wrap: w;
+}
+
 // spacing horizontal margin
 l-mh(l, r = l) {
   margin-left: l;
@@ -122,33 +151,4 @@ a-loop(t = infinite, re = false) {
 
 // #region flex
 
-// quick set about flex attribute
-f-lay(dir, jc = normal, ai = normal, w = nowrap) {
-	$flex_direction = {
-		h: row,
-		hr: row-reverse,
-		v: column,
-		vr: column-reverse
-	};
-  $flex_content = {
-    fs: flex-start,
-    c: center,
-    fe: flex-end,
-    sa: space-around,
-    se: space-evenly,
-    sb: space-between
-  };
-  $flex_items = {
-    s: start,
-    c: center,
-    b: baseline,
-    e: end,
-    st: stretch
-  };
-  display: flex;
-  flex-direction: $flex_direction[dir];
-  justify-content: $flex_content[jc];
-  align-items: $flex_items[ai];
-  flex-wrap: w;
-}
 // #endregion

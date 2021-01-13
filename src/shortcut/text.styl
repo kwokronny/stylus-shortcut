@@ -11,14 +11,14 @@
 		}
 	}
 
-	yoz_text_align = {
+	$yoz_text_align = {
 		l: left,
 		r: right,
 		c: center,
 		j: justify
 	};
 
-	for $name, $value in yoz_text_align {
+	for $name, $value in $yoz_text_align {
 		&-a_{$name} {
 			text-align: $value;
 		}

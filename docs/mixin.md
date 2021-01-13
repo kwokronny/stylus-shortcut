@@ -1,4 +1,4 @@
-> stylus 配置中全局引入，简写样式过程，常见的样式属性设置，如宽度常与高度通常同时被设置，背景颜色及文字颜色等。以减少编码量，加快工作效率。
+> stylus 配置中全局引入，简写样式过程，常见的样式属性设置，如宽度常与高度通常同时被设置，背景颜色及文字颜色等。以减少编码量，加快工作效率。<p> 将方法按应用分为 布局(l-)、文本(t-)、样式(s-)、动画(a-)</p>
 
 ## 使用方式
 
@@ -53,6 +53,71 @@ modules.export={
   }
   ```
 
+- ### l-flex(direction, justify-content, align-items, wrap)
+
+  > 快捷设置弹性盒子的主轴，主轴分布方式，垂直主轴对齐方式，超出方案；因 flex-direction、justify-content 及 align-items 属性部分值相对冗长难记，通过简写方便应用。
+
+  | 入参名          | 值格式                   | 是否可空 | 默认值 |
+  | :-------------- | :----------------------- | :------- | :----- |
+  | direction       | flex-direction 对应简写  | 否       |        |
+  | justify-content | justify-content 对应简写 | 是       | fs     |
+  | align-items     | align-items 对应简写     | 是       | s     |
+  | wrap            | flex-wrap 值             | 是       | nowrap |
+
+  - **flex-direction 简写对应**
+
+    > 简写思路：h 代指水平、横向 ； v 代指垂直、竖向；r 代指反向
+
+    | 简写 | 对应值         |
+    | :--- | :------------- |
+    | h    | row            |
+    | hr   | row-reverse    |
+    | v    | column         |
+    | vr   | column-reverse |
+
+  - **justify-content 简写对应**
+
+    > 简写思路：单词首字母，连词则为所有连接词首字母组合
+
+    | 简写 | 对应值        |
+    | :--- | :------------ |
+    | fs   | flex-start    |
+    | c    | center        |
+    | fe   | flex-end      |
+    | sa   | space-around  |
+    | se   | space-evenly  |
+    | sb   | space-between |
+
+  - **align-items 简写对应**
+
+    > 简写思路：单词首字母，连词则为所有连接词首字母组合
+
+    | 简写 | 对应值   |
+    | :--- | :------- |
+    | fs  | flex-start|
+    | c   | center    |
+    | fe  | flex-end  |
+    | st  | stretch   |
+
+  Example:
+
+  ```stylus
+  .style {
+    l-flex: h sb c wrap
+  }
+  ```
+
+  Result:
+
+  ```css
+  .style {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  ```
+
 - ### 间距
 
   - #### l-mh(left, right)
@@ -102,7 +167,7 @@ modules.export={
     }
     ```
 
-  - #### l-mv(left, right)
+  - #### l-mv(top, bottom)
 
     > 设置垂直外间距
 
@@ -318,74 +383,6 @@ Result:
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-```
-
-## 弹性盒子
-
-- ### f-lay(direction, justify-content, align-items, wrap)
-
-> 快捷设置弹性盒子  的主轴，主轴分布方式，垂直主轴对齐方式，超出方案；因 flex-direction、justify-content 及 align-items 属性部分值相对冗长难记，帮通过简写方便应用。
-
-| 入参名          | 值格式                   | 是否可空 | 默认值 |
-| :-------------- | :----------------------- | :------- | :----- |
-| direction       | flex-direction 对应简写  | 否       |        |
-| justify-content | justify-content 对应简写 | 是       | fs     |
-| align-items     | align-items 对应简写     | 是       | fs     |
-| wrap            | flex-wrap 值             | 是       | nowrap |
-
-- **flex-direction 简写对应**
-
-  > 简写思路：h 代指水平、横向 ； v 代指垂直、竖向；r 代指反向
-
-  | 简写 | 对应值         |
-  | :--- | :------------- |
-  | h    | row            |
-  | hr   | row-reverse    |
-  | v    | column         |
-  | vr   | column-reverse |
-
-- **justify-content 简写对应**
-
-  > 简写思路：单词首字母，连词则为所有连接词首字母组合
-
-  | 简写 | 对应值        |
-  | :--- | :------------ |
-  | fs   | flex-start    |
-  | c    | center        |
-  | fe   | flex-end      |
-  | sa   | space-around  |
-  | se   | space-evenly  |
-  | sb   | space-between |
-
-- **align-items 简写对应**
-
-  > 简写思路：单词首字母，连词则为所有连接词首字母组合
-
-  | 简写 | 对应值   |
-  | :--- | :------- |
-  | s    | start    |
-  | c    | center   |
-  | b    | baseline |
-  | e    | end      |
-  | st   | stretch  |
-
-Example:
-
-```stylus
-.style {
-  f-lay: h sb c wrap
-}
-```
-
-Result:
-
-```css
-.style {
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
 }
 ```
 
