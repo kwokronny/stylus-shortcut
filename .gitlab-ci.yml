@@ -1,0 +1,28 @@
+image: node:12
+
+stages:
+  - deploy
+  
+before_script:
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - mkdir -p ~/.ssh
+  - eval $(ssh-agent -s)
+  - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+generate:
+  stage: deploy
+  only:
+    - master
+  variables:
+    deploy_path: "/www/wwwroot/kwokronny.top/stylus-shortcut-document/"
+    tar_name: "stylus.document.tar.gz"
+  script:
+    - echo "开始部署"
+    - cd docs
+    - rm -rf stylus
+    - tar -zcvf "$tar_name" ./*
+    - eval `ssh-agent -s`
+    - ssh-add <(echo "$SERVER_KEY")
+    - scp -P"$SERVER_PORT" "$tar_name" root@"$SERVER_HOST":/root
+    - ssh -p"$SERVER_PORT" root@"$SERVER_HOST" "tar -zxvf $tar_name -C $deploy_path && rm $tar_name"
+    - echo "部署完成"
