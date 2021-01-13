@@ -1,6 +1,6 @@
 {
   "name": "@hiyoz/stylus-shortcut",
-  "version": "1.1.0-0",
+  "version": "2.0.0",
   "description": "yoz shortcut stylus mixins style",
   "main": "src/index.styl",
   "scripts": {
