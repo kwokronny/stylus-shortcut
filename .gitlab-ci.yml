@@ -24,5 +24,5 @@ generate:
     - eval `ssh-agent -s`
     - ssh-add <(echo "$SERVER_KEY")
     - scp -P"$SERVER_PORT" "$tar_name" root@"$SERVER_HOST":/root
-    - ssh -p"$SERVER_PORT" root@"$SERVER_HOST" "tar -zxvf $tar_name -C $deploy_path && rm $tar_name"
+    - ssh -p"$SERVER_PORT" root@"$SERVER_HOST" "mkdir -p $deploy_path; tar -zxvf $tar_name -C $deploy_path && rm $tar_name"
     - echo "部署完成"

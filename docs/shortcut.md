@@ -5,7 +5,7 @@
 ## 使用方式
 
 ```stylus
-@import "~@yoz/stylus-shortcut/src/shortcut.styl"
+@import "~@hiyoz/stylus-shortcut"
 ```
 
 ## 自定义变量
@@ -115,7 +115,7 @@ yoz_grid_query ?= {
 复制修改 变量模板后在 shortcut.styl 前引用即可
 
 ```stylus
-@import "your-variable-file.styl" //
+@import "your-variable-file.styl" //自定义的变量文件
 @import "~@yoz/stylus-shortcut/src/shortcut.styl"
 ```
 

@@ -2,6 +2,10 @@
 
 ## 使用方式
 
+```stylus
+@import "@hiyoz/stylus-shortcut"
+```
+
 如 vue-cli@3 配置示例，在 stylus-loader 中配置 import 全局引入
 
 ```javascript
@@ -14,7 +18,7 @@ modules.export={
       // 向预处理器 Loader 传递配置选项
       stylus: {
         import: [
-          "@yoz/stylus-shortcut/src/mixin.styl"
+          "@hiyoz/stylus-shortcut/src/mixin.styl"
         ]
       }
     }
