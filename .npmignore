@@ -1,2 +1,5 @@
 test
-doc
+docs
+script
+.gitlab-ci.yml
+.gitignore
