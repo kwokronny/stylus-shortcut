@@ -18,7 +18,6 @@ fs.watch(path.resolve("./src"), { recursive: true }, function (eventType, filena
   if (filename.indexOf(".styl")) {
 		generateCss();
     console.log(`监控到 stylus-shortcut 有变动，更新 doc 样式文件`);
-    
   }
 });
 generateCss();
@@ -50,6 +49,3 @@ const serve = http.createServer(function (req, res) {
 serve.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
 });
-
-// // 终端打印如下信息
-//

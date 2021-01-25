@@ -65,7 +65,7 @@ modules.export={
   | :-------------- | :----------------------- | :------- | :----- |
   | direction       | flex-direction 对应简写  | 否       |        |
   | justify-content | justify-content 对应简写 | 是       | fs     |
-  | align-items     | align-items 对应简写     | 是       | s     |
+  | align-items     | align-items 对应简写     | 是       | s      |
   | wrap            | flex-wrap 值             | 是       | nowrap |
 
   - **flex-direction 简写对应**
@@ -96,12 +96,12 @@ modules.export={
 
     > 简写思路：单词首字母，连词则为所有连接词首字母组合
 
-    | 简写 | 对应值   |
-    | :--- | :------- |
-    | fs  | flex-start|
-    | c   | center    |
-    | fe  | flex-end  |
-    | st  | stretch   |
+    | 简写 | 对应值     |
+    | :--- | :--------- |
+    | fs   | flex-start |
+    | c    | center     |
+    | fe   | flex-end   |
+    | st   | stretch    |
 
   Example:
 
@@ -280,15 +280,15 @@ modules.export={
 
 ## 文本
 
-- ### t-fl(size, lineHeight, color)
+- ### t-fl(size, lineHeight, color/align)
 
-  > 快速设置以下属性 font-size, line-height, color
+  > 快速设置以下属性 font-size, line-height, color or text-align
 
-  | 入参名     | 值格式 | 是否可空 | 默认值    |
-  | :--------- | :----- | :------- | :-------- |
-  | size       | unit   | 否       |           |
-  | lineHeight | unit   | 是       | 入参 size |
-  | color      | rgba   | 是       |           |
+  | 入参名       | 值格式              | 是否可空 | 默认值                                                                                     |
+  | :----------- | :------------------ | :------- | :----------------------------------------------------------------------------------------- |
+  | size         | unit                | 否       |                                                                                            |
+  | lineHeight   | unit                | 是       | 入参 size                                                                                  |
+  | color\|align | rgba\|text-align 值 | 是       | 根据入参类型设置属性值，值为 color 时设置 color，值为 text-align 对齐参数时设置 text-align |
 
   Example:
 

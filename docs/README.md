@@ -33,7 +33,7 @@ stylus-shortcut 可以加速编写 CSS，通过 stylus 中 mixin 的功能，将
 @import "~@hiyoz/stylus-shortcut/src/mixin.styl
 ```
 
-> 变量与mixin需要在多文件下自动引用可通过stylus-loader
+> 变量与mixin需要在多文件下自动引用可通过stylus-loader
 如 vue-cli@3 配置示例，在 stylus-loader 中配置 import 全局引入
 
 ```javascript

@@ -12,8 +12,10 @@ t-fl(s, lh = s, c = false) {
   font-size: s;
   line-height: lh;
 
-  if (c) {
+  if (c && typeof(c) == 'rgba') {
     color: c;
+  } else if (c) {
+    text-align: center;
   }
 }
 
