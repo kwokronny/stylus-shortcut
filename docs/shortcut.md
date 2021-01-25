@@ -707,7 +707,7 @@ yoz_grid_query ?= {
     };
   ```
 
-  > 根据变量`yoz_line`中成员生成，默认值可查看 [自定义变量](#自定义变量)
+  > 根据变量`yoz_grid_gutter`中成员生成，默认值可查看 [自定义变量](#自定义变量)
 
   #### 示例
 
@@ -782,17 +782,24 @@ yoz_grid_query ?= {
     };
   ```
 
-  > 根据变量`yoz_grid_col`分割，默认值可查看 [自定义变量](#自定义变量)
+  | key | 对应值            | 说明     |
+  | :-- | ----------------- | -------- |
+  | l   | max-width: 1200px | 大屏     |
+  | m   | max-width: 992px  | 小显示器 |
+  | t   | max-width: 768px  | 平板     |
+  | p   | max-width: 540px  | 手机     |
+
+  > 根据变量`yoz_grid_query`分割，默认值可查看 [自定义变量](#自定义变量)
 
   #### 示例
 
   ```htm
   <div class="row gutter-s">
-    <div class="col-ph-24 col-pa-0 col-0"><div class="line-a_so1 text-clamp_1">.col-ph-24.col-pa-0.col-0</div></div>
-    <div class="col-ph-12 col-ph-ml_12 col-pa-24 col-2"><div class="line-a_so1 text-clamp_1">.col-ph-12.col-ph-ml_12.col-pa-24.col-2</div></div>
-    <div class="col-ph-12 col-ph-mr_12 col-pa-24 col-4"><div class="line-a_so1 text-clamp_1">.col-ph-12.col-ph-mr_12.col-pa-24.col-4</div></div>
-    <div class="col-ph-24 col-pa-12 col-6"><div class="line-a_so1 text-clamp_1">.col-ph-24.col-pa-12.col-6</div></div>
-    <div class="col-ph-24 col-pa-12 col-12"><div class="line-a_so1 text-clamp_1">.col-ph-24.col-pa-12.col-12</div></div>
+    <div class="col-p-24 col-t-0 col-0"><div class="line-a_so1 text-clamp_1">.col-p-24.col-t-0.col-0</div></div>
+    <div class="col-p-12 col-p-ml_12 col-t-24 col-2"><div class="line-a_so1 text-clamp_1">.col-p-12.col-p-ml_12.col-t-24.col-2</div></div>
+    <div class="col-p-12 col-p-mr_12 col-t-24 col-4"><div class="line-a_so1 text-clamp_1">.col-p-12.col-p-mr_12.col-t-24.col-4</div></div>
+    <div class="col-p-24 col-t-12 col-6"><div class="line-a_so1 text-clamp_1">.col-p-24.col-t-12.col-6</div></div>
+    <div class="col-p-24 col-t-12 col-12"><div class="line-a_so1 text-clamp_1">.col-p-24.col-t-12.col-12</div></div>
   </div>
   ```
 

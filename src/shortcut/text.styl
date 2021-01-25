@@ -38,11 +38,12 @@
 
 			if ($line == 1) {
 				white-space: nowrap;
+			} else {
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: $line;
 			}
 
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: $line;
 		}
 	}
 }
