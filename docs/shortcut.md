@@ -5,7 +5,7 @@
 ## 使用方式
 
 ```stylus
-@import "~@hiyoz/stylus-shortcut"
+@import "~stylus-shortcut"
 ```
 
 ## 自定义变量

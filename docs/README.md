@@ -2,11 +2,13 @@
 
 [作者博客](https://kwokronny.top) | [说明文档](https://kwokronny.top/stylus-shortcut-document/)
 
-stylus-shortcut 可以加速编写 CSS，通过 stylus 中 mixin 的功能，将样式常用组合合并汇以简单一句，减少代码的编写量；并通过 stylus 循环将常用主题变量生成常用的样式规则，可快捷使用。
+[![](https://img.shields.io/npm/v/stylus-shortcut)](https://www.npmjs.com/package/stylus-shortcut) 
+
+stylus-shortcut 可以加速编写 CSS，通过 stylus 中 mixin 的功能，将样式常用组合汇以简单一句，减少代码的编写量；并通过 stylus 循环将常用主题变量生成常用的样式规则，可快捷使用。
 
 ## 开发意图
 
-编写这个项目最初的目的是在开发一 SAAS 平台时，我已采用 iviewUI 的基础上进行开发，并通过自定义主题覆盖了部分样式及颜色变量后。常常需要在部分元素上为元素命名后仅仅为其加一项间距属性或文本颜色等简单的样式。来回切换样式文件与 DOM 文件，及为不重要的小元素命名，多而烦；或许这也是为什么 Bootstrap 可以一下成为大家热爱的库吧。
+编写这个项目最初的目的是在开发 SAAS 平台时，我已采用 iviewUI 的基础上进行开发，并通过自定义主题覆盖了部分样式及颜色变量后。常常需要在部分元素上为元素命名后仅仅为其加一项间距属性或文本颜色等简单的样式。来回切换样式文件与 DOM 文件，及为不重要的小元素命名，多而烦；或许这也是为什么 Bootstrap 可以一下成为大家热爱的库吧。
 
 所以我简单通过 stylus 的循环按设计规范中常用的间距生成了多个间距样式及颜色样式，真的非常的方便与快落；事实证明频繁的切换文件是容易忘记自己需要做什么的。
 再之后，为一些复杂的设计编写样式时，常常在写完 width 时基本下一句可能就是 height，嗒嗒嗒下来，写了许多行，但常常这些伴随着规律，定位时会写 left,top、宽高写完时可能还会再设置个圆角等，写了几年前端后早已厌烦了长长的样式规则。
@@ -26,11 +28,11 @@ stylus-shortcut 可以加速编写 CSS，通过 stylus 中 mixin 的功能，将
 ```stylus
 @import "your-custom-variable-file.styl" //引入自定义变量
 // 同时引入 shortcut.styl mixin.styl
-@import "~@hiyoz/stylus-shortcut"
+@import "~stylus-shortcut"
 // or 单独引入 shortcut.styl
-@import "~@hiyoz/stylus-shortcut/src/shortcut.styl
+@import "~stylus-shortcut/src/shortcut.styl
 // or 单独引入 mixin.styl
-@import "~@hiyoz/stylus-shortcut/src/mixin.styl
+@import "~stylus-shortcut/src/mixin.styl
 ```
 
 > 变量与mixin需要在多文件下自动引用可通过stylus-loader
@@ -47,7 +49,7 @@ modules.export={
       stylus: {
         import: [
           "your-custom-variable-file.styl",
-          "@hiyoz/stylus-shortcut/src/mixin.styl"
+          "stylus-shortcut/src/mixin.styl"
         ]
       }
     }
@@ -58,7 +60,8 @@ modules.export={
 
 ## 示例
 
-```variable.styl
+```styl
+// 文件variable.styl
 yoz_color = {
   primary: #1890ff,
   link: #1890ff,
@@ -66,7 +69,7 @@ yoz_color = {
   warning: #faad14,
   error: #f5222d
 };
-yoz_spacing ?= {
+yoz_spacing = {
   '5': 5px,
   '10': 10px,
   '20': 20px,
