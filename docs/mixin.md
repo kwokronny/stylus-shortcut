@@ -17,9 +17,9 @@ modules.export={
     loaderOptions: {
       // 向预处理器 Loader 传递配置选项
       stylus: {
-        import: [
-          "stylus-shortcut/src/mixin.styl"
-        ]
+        stylusOptions:{
+          import: ["stylus-shortcut/src/mixin.styl"]
+        }
       }
     }
   }

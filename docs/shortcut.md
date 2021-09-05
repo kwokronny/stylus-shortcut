@@ -116,7 +116,7 @@ yoz_grid_query ?= {
 
 ```stylus
 @import "your-variable-file.styl" //自定义的变量文件
-@import "~@yoz/stylus-shortcut/src/shortcut.styl"
+@import "~stylus-shortcut/src/shortcut.styl"
 ```
 
 可在 `stylusOptions` 配置中全局引用，方便项目中多样式文件可直接应用变量
@@ -132,9 +132,11 @@ yoz_grid_query ?= {
       loaderOptions: {
         // 向预处理器 Loader 传递配置选项
         stylus: {
-          import: [
-            "your-custom-file.styl"
-          ]
+          stylusOptions:{
+            import: [
+              "your-custom-file.styl"
+            ]
+          }
         }
       }
     }
