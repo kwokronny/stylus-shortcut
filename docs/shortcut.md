@@ -1,11 +1,14 @@
 ## 开发意图
 
-开发中常见许多样式规则并不复杂，但应用范围广，相同规则需要重复编写，组件元素下大部分样式已根据类似组件的样式完成，局部元素调整即可时。通过变量生成的方式，也更易迭代应用于样式不多变的平台类前端等项目；也梳理生成常用的如栅格化，弹性盒子等样式，引入即可应用。
+
+按要求配置自定义变量文件，引入 shortcut.styl 文件，就会根据自定义变量生成常用的设计规范 `class`。
+
 
 ## 使用方式
 
 ```stylus
-@import "~stylus-shortcut"
+@import "your-variable-file.styl" //自定义的变量文件
+@import "~stylus-shortcut/src/shortcut.styl" //便捷样式生成
 ```
 
 ## 自定义变量
@@ -78,8 +81,9 @@ yoz_font_family ?= {
 yoz_font_size ?= {
   s: 12px 20px,
   m: 14px 22px,
-  b: 16px 24px,
-  l: 18px 28px
+  st: 16px 24px,
+  t: 18px 28px,
+  lt: 20px 30px
 };
 /**
  * 常用间距变量
@@ -90,13 +94,13 @@ yoz_spacing ?= {
   '10': 10px,
   '20': 20px,
   '30': 30px,
-  a: auto
+  'a': auto
 };
 /**
  * 默认栅格化相关变量
  * default variable by grid system
  */
-  // 自定义栅格数
+// 自定义栅格数
 yoz_grid_col ?= 24;
 // 栅格化 栅格间距
 yoz_grid_gutter ?= {
@@ -119,30 +123,7 @@ yoz_grid_query ?= {
 @import "~stylus-shortcut/src/shortcut.styl"
 ```
 
-可在 `stylusOptions` 配置中全局引用，方便项目中多样式文件可直接应用变量
-
-如: vue-cli@3 配置
-
-```javascript
-  //vue.config.js
-  modules.export={
-    ...
-    css: {
-      // 配置css模块
-      loaderOptions: {
-        // 向预处理器 Loader 传递配置选项
-        stylus: {
-          stylusOptions:{
-            import: [
-              "your-custom-file.styl"
-            ]
-          }
-        }
-      }
-    }
-    ...
-  }
-```
+亦可在 `stylusOptions` 配置中全局引用，方便项目中多样式文件可直接应用变量
 
 > 变量成员可按规则自由设置，自定义变量将盖默认值
 
@@ -348,9 +329,11 @@ yoz_grid_query ?= {
   #### 示例
 
   ```html
-  <div class="text-s_s">小字体</div>
-  <div class="text-s_m">常规字体</div>
-  <div class="text-s_l">大字体</div>
+  <div class="text-s_e">small 辅助文字</div>
+  <div class="text-s_c">middle 正文</div>
+  <div class="text-s_st">small title 小标题</div>
+  <div class="text-s_t">title 标题</div>
+  <div class="text-s_lt">large title 大标题</div>
   ```
 
 - ### 排列 `text-a_{key}`

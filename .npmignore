@@ -1,5 +1,6 @@
 test
 docs
 script
-.gitlab-ci.yml
+.github
+yarn.lock
 .gitignore

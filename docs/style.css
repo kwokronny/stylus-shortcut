@@ -516,13 +516,17 @@
   font-size: 14px;
   line-height: 22px;
 }
-.text-s_b {
+.text-s_st {
   font-size: 16px;
   line-height: 24px;
 }
-.text-s_l {
+.text-s_t {
   font-size: 18px;
   line-height: 28px;
+}
+.text-s_lt {
+  font-size: 20px;
+  line-height: 30px;
 }
 .text-clamp_1 {
   text-overflow: ellipsis;
@@ -1725,4 +1729,8 @@
   position: absolute;
   left: 0;
   top: -20px;
+}
+.color-box {
+  width: 100%;
+  height: 114px;
 }
