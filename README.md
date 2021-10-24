@@ -1,13 +1,11 @@
-# stylus-shortcut
-
 # Stylus-Shortcut [![](https://img.shields.io/npm/v/stylus-shortcut)](https://www.npmjs.com/package/stylus-shortcut)
 
 简化你的样式编写！设计规范快速生成常用的辅助性 `class`；将常用组合的属性合并简写。
 
 ## 文档 Document
 
-- [说明文档-Gitee](https://kwokronny.gitee.io/stylus-shortcut-document/)
-- [说明文档-Github](https://kwokronny.github.io/stylus-shortcut-document/)
+- [说明文档-Gitee](https://kwokronny.gitee.io/stylus-shortcut/)
+- [说明文档-Github](https://kwokronny.github.io/stylus-shortcut/)
 
 ## 特性 Feature
 
