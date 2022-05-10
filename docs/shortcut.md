@@ -1,8 +1,6 @@
 ## 开发意图
 
-
 按要求配置自定义变量文件，引入 shortcut.styl 文件，就会根据自定义变量生成常用的设计规范 `class`。
-
 
 ## 使用方式
 
@@ -255,7 +253,50 @@ yoz_grid_query ?= {
   </div>
   ```
 
-  - ### 浮动
+- ### 鼠标样式 `curs-{name}`
+
+  #### 示例
+
+  | 样式名               | 效果                                                                  |
+  | :------------------- | :-------------------------------------------------------------------- |
+  | `curs-auto`          | <img class="curs-auto" src="/img/cursor-auto.svg"/>                   |
+  | `curs-default`       | <img class="curs-default" src="/img/cursor-default.svg"/>             |
+  | `curs-pointer`       | <img class="curs-pointer" src="/img/cursor-pointer.svg"/>             |
+  | `curs-wait`          | <img class="curs-wait" src="/img/cursor-wait.svg"/>                   |
+  | `curs-text`          | <img class="curs-text" src="/img/cursor-text.svg"/>                   |
+  | `curs-move`          | <img class="curs-move" src="/img/cursor-move.svg"/>                   |
+  | `curs-help`          | <img class="curs-help" src="/img/cursor-help.svg"/>                   |
+  | `curs-not-allowed`   | <img class="curs-not-allowed" src="/img/cursor-not-allowed.svg"/>     |
+  | `curs-none`          | <div class="curs-none" style="height:20px; width:20px;"></div>        |
+  | `curs-context-menu`  | <img class="curs-context-menu" src="/img/cursor-context-menu.svg"/>   |
+  | `curs-progress`      | <img class="curs-progress" src="/img/cursor-progress.svg"/>           |
+  | `curs-cell`          | <img class="curs-cell" src="/img/cursor-cell.svg"/>                   |
+  | `curs-crosshair`     | <img class="curs-crosshair" src="/img/cursor-crosshair.svg"/>         |
+  | `curs-vertical-text` | <img class="curs-vertical-text" src="/img/cursor-vertical-text.svg"/> |
+  | `curs-alias`         | <img class="curs-alias" src="/img/cursor-alias.svg"/>                 |
+  | `curs-copy`          | <img class="curs-copy" src="/img/cursor-copy.svg"/>                   |
+  | `curs-no-drop`       | <img class="curs-no-drop" src="/img/cursor-no-drop.svg"/>             |
+  | `curs-grab`          | <img class="curs-grab" src="/img/cursor-grab.svg"/>                   |
+  | `curs-grabbing`      | <img class="curs-grabbing" src="/img/cursor-grabbing.svg"/>           |
+  | `curs-all-scroll`    | <img class="curs-all-scroll" src="/img/cursor-all-scroll.svg"/>       |
+  | `curs-col-resize`    | <img class="curs-col-resize" src="/img/cursor-col-resize.svg"/>       |
+  | `curs-row-resize`    | <img class="curs-row-resize" src="/img/cursor-row-resize.svg"/>       |
+  | `curs-n-resize`      | <img class="curs-n-resize" src="/img/cursor-n-resize.svg"/>           |
+  | `curs-e-resize`      | <img class="curs-e-resize" src="/img/cursor-e-resize.svg"/>           |
+  | `curs-s-resize`      | <img class="curs-s-resize" src="/img/cursor-s-resize.svg"/>           |
+  | `curs-w-resize`      | <img class="curs-w-resize" src="/img/cursor-w-resize.svg"/>           |
+  | `curs-ne-resize`     | <img class="curs-ne-resize" src="/img/cursor-ne-resize.svg"/>         |
+  | `curs-nw-resize`     | <img class="curs-nw-resize" src="/img/cursor-nw-resize.svg"/>         |
+  | `curs-se-resize`     | <img class="curs-se-resize" src="/img/cursor-se-resize.svg"/>         |
+  | `curs-sw-resize`     | <img class="curs-sw-resize" src="/img/cursor-sw-resize.svg"/>         |
+  | `curs-ew-resize`     | <img class="curs-ew-resize" src="/img/cursor-ew-resize.svg"/>         |
+  | `curs-ns-resize`     | <img class="curs-ns-resize" src="/img/cursor-ns-resize.svg"/>         |
+  | `curs-nesw-resize`   | <img class="curs-nesw-resize" src="/img/cursor-nesw-resize.svg"/>     |
+  | `curs-nwse-resize`   | <img class="curs-nwse-resize" src="/img/cursor-nwse-resize.svg"/>     |
+  | `curs-zoom-in`       | <img class="curs-zoom-in" src="/img/cursor-zoom-in.svg"/>             |
+  | `curs-zoom-out`      | <img class="curs-zoom-out" src="/img/cursor-zoom-out.svg"/>           |
+
+- ### 浮动
 
   - `float-l` 左浮动
   - `float-r` 右浮动
@@ -374,6 +415,37 @@ yoz_grid_query ?= {
     <label><input data-id="textAlignDemo" data-class="text-a_" name="align" value="j" type="radio" /> 文本平整</label>
   </div>
 
+- ### 超出截断 `text-o_{key}`
+
+  > 默认提供下列对应关系。
+
+  | key | 对应值   | 说明   |
+  | :-- | -------- | ------ |
+  | e   | ellipsis | 省略号 |
+  | c   | clip     | 截断   |
+  
+  > 对应代码
+
+  ```stylus
+  overflow: hidden;
+  text-overflow: $key;
+  white-space: nowrap;
+  ```
+
+  #### 示例
+
+  ```html
+  <div id="textOverflowDemo" class="text-o_e" style="height: 30px; width: 200px;">
+    君不见黄河之水天上来，奔流到海不复回。君不见高堂明镜悲白发，朝如青丝暮成雪。人生得意须尽欢，莫使金樽空对月。天生我材必有用，千金散尽还复来。烹羊宰牛且为乐，会须一饮三百杯。岑夫子，丹丘生，将进酒，杯莫停。与君歌一曲，请君为我倾耳听。钟鼓馔玉不足贵，但愿长醉不愿醒。古来圣贤皆寂寞，惟有饮者留其名。陈王昔时宴平乐，斗酒十千恣欢谑。主人何为言少钱，径须沽取对君酌。五花马、千金裘，呼儿将出换美酒，与尔同销万古愁。
+  </div>
+  ```
+
+  <div class="flex-v">
+    <div>设置超出省略：<span class="text-c_primary text-s_l">.text-o_<span id="textOverflowDemoValue">e</span></span></div>
+    <label><input data-id="textOverflowDemo" data-class="text-o_" name="overflow" value="e" type="radio" /> ellipsis</label>
+    <label><input data-id="textOverflowDemo" data-class="text-o_" name="overflow" value="c" type="radio" /> clip</label>
+  </div>
+
 - ### 省略 `text-clamp_{1~6}`
 
   > 默认提供 1 到 6 行的超出省略样式，需注意兼容情况。
@@ -440,6 +512,8 @@ yoz_grid_query ?= {
   | cover   | cover     | 保持宽高缩放图片，使图片的短边能完全显示出来，裁剪长边 |
   | contain | contain   | 保持宽高缩放图片，使图片的长边能完全显示出来           |
   | fill    | 100% 100% | 拉伸图片，使图片填满元素                               |
+  | fill_w  | 100% auto | 宽度 100%，高度自适应                                  |
+  | fill_h  | auto 100% | 高度 100%，宽度自适应                                  |
 
   #### 示例
 
@@ -452,6 +526,34 @@ yoz_grid_query ?= {
     <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="cover" type="radio" /> cover</label>
     <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="contain" type="radio" /> contain</label>
     <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="fill" type="radio" /> fill</label>
+    <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="fill_w" type="radio" /> fill_w</label>
+    <label><input data-id="BgModeDemo" data-class="box bg-m_" name="bgMode" value="fill_h" type="radio" /> fill_h</label>
+  </div>
+  ```
+
+- ### 铺贴模式 `bg-r_{key}`
+
+  > 默认提供下列对应关系。
+
+  | key | 对应值    | 说明            |
+  | :-- | --------- | --------------- |
+  | no  | no-repeat | 不重复          |
+  | xy  | repeat    | x 轴与 y 轴重复 |
+  | x   | repeat-x  | x 轴重复        |
+  | y   | repeat-y  | y 轴重复        |
+
+  #### 示例
+
+  ```html
+  <div style="background-image: url(./img/repeat.jpg);" id="BgRepeatDemo" class="box bg-r_no"></div>
+  <div class="spac-mv_20">
+    <div>
+      设置背景铺贴模式：<span class="text-c_primary text-s_l">.bg-r_<span id="BgRepeatDemoValue">no</span></span>
+    </div>
+    <label><input data-id="BgRepeatDemo" data-class="box bg-r_" name="bgRepeat" value="no" type="radio" /> no</label>
+    <label><input data-id="BgRepeatDemo" data-class="box bg-r_" name="bgRepeat" value="xy" type="radio" /> xy</label>
+    <label><input data-id="BgRepeatDemo" data-class="box bg-r_" name="bgRepeat" value="x" type="radio" /> x</label>
+    <label><input data-id="BgRepeatDemo" data-class="box bg-r_" name="bgRepeat" value="y" type="radio" /> y</label>
   </div>
   ```
 

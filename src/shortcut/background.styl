@@ -3,19 +3,33 @@
 		&bg-c_{$name} {
 			background-color: $color;
 		}
-
 	}
-	
+
 	$background_mode = {
 		cover: cover,
 		contain: contain,
 		fill: 100% 100%,
+		fill_w: 100% auto,
+		fill_h: auto 100%
 	};
 
 	for $name, $mode in $background_mode {
 		&bg-m_{$name} {
 			background-size: $mode;
 			background-position: center;
+		}
+	}
+
+	$background_repeat = {
+		no: no-repeat,
+		x: repeat-x,
+		y: repeat-y,
+		xy: repeat
+	};
+
+	for $name, $repeat in $background_repeat {
+		&bg-r_{$name} {
+			background-repeat: $repeat;
 		}
 	}
 }

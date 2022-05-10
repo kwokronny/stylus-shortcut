@@ -33,16 +33,23 @@
 
 	for $line in 1 .. 6 {
 		&-clamp_{$line} {
-			text-overflow: ellipsis;
 			overflow: hidden;
-
-			if ($line == 1) {
-				white-space: nowrap;
-			}
-
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
 			-webkit-line-clamp: $line;
+		}
+	}
+
+	$yoz_text_overflow = {
+		e: ellipsis,
+		c: clip
+	};
+
+	for $name, $value in $yoz_text_overflow {
+		&-o_{$name} {
+			overflow: hidden;
+			text-overflow: $value;
+			white-space: nowrap;
 		}
 	}
 }

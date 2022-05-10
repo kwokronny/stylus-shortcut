@@ -4,6 +4,114 @@
 .float-r {
   float: right;
 }
+.curs-auto {
+  cursor: auto;
+}
+.curs-default {
+  cursor: default;
+}
+.curs-pointer {
+  cursor: pointer;
+}
+.curs-wait {
+  cursor: wait;
+}
+.curs-text {
+  cursor: text;
+}
+.curs-move {
+  cursor: move;
+}
+.curs-help {
+  cursor: help;
+}
+.curs-not-allowed {
+  cursor: not-allowed;
+}
+.curs-none {
+  cursor: none;
+}
+.curs-context-menu {
+  cursor: context-menu;
+}
+.curs-progress {
+  cursor: progress;
+}
+.curs-cell {
+  cursor: cell;
+}
+.curs-crosshair {
+  cursor: crosshair;
+}
+.curs-vertical-text {
+  cursor: vertical-text;
+}
+.curs-alias {
+  cursor: alias;
+}
+.curs-copy {
+  cursor: copy;
+}
+.curs-no-drop {
+  cursor: no-drop;
+}
+.curs-grab {
+  cursor: grab;
+}
+.curs-grabbing {
+  cursor: grabbing;
+}
+.curs-all-scroll {
+  cursor: all-scroll;
+}
+.curs-col-resize {
+  cursor: col-resize;
+}
+.curs-row-resize {
+  cursor: row-resize;
+}
+.curs-n-resize {
+  cursor: n-resize;
+}
+.curs-e-resize {
+  cursor: e-resize;
+}
+.curs-s-resize {
+  cursor: s-resize;
+}
+.curs-w-resize {
+  cursor: w-resize;
+}
+.curs-ne-resize {
+  cursor: ne-resize;
+}
+.curs-nw-resize {
+  cursor: nw-resize;
+}
+.curs-se-resize {
+  cursor: se-resize;
+}
+.curs-sw-resize {
+  cursor: sw-resize;
+}
+.curs-ew-resize {
+  cursor: ew-resize;
+}
+.curs-ns-resize {
+  cursor: ns-resize;
+}
+.curs-nesw-resize {
+  cursor: nesw-resize;
+}
+.curs-nwse-resize {
+  cursor: nwse-resize;
+}
+.curs-zoom-in {
+  cursor: zoom-in;
+}
+.curs-zoom-out {
+  cursor: zoom-out;
+}
 .clearfix:before,
 .clearfix:after {
   display: table;
@@ -460,6 +568,26 @@
   background-size: 100% 100%;
   background-position: center;
 }
+.bg-m_fill_w {
+  background-size: 100% auto;
+  background-position: center;
+}
+.bg-m_fill_h {
+  background-size: auto 100%;
+  background-position: center;
+}
+.bg-r_no {
+  background-repeat: no-repeat;
+}
+.bg-r_x {
+  background-repeat: repeat-x;
+}
+.bg-r_y {
+  background-repeat: repeat-y;
+}
+.bg-r_xy {
+  background-repeat: repeat;
+}
 .text-c_primary {
   color: #1890ff;
 }
@@ -529,47 +657,50 @@
   line-height: 30px;
 }
 .text-clamp_1 {
-  text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
 .text-clamp_2 {
-  text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 .text-clamp_3 {
-  text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
 .text-clamp_4 {
-  text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
 }
 .text-clamp_5 {
-  text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
 }
 .text-clamp_6 {
-  text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
+}
+.text-o_e {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-o_c {
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
 }
 .gutter-s [class*='col-'] {
   padding-left: 10px;
@@ -1720,6 +1851,7 @@
   height: 100px;
   color: rgba(0,0,0,0.45);
   text-align: center;
+  transition: all 0.1s ease-out;
 }
 .demo:before {
   content: 'Result:';

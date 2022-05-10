@@ -11,7 +11,5 @@
 
 ## 赞助
 
-![](./assets/alipay.jpg)
-![](./assets/wechat_pay.jpg)
-![](img/wechat_pay.jpg)
-![](img/alipay.jpg)
+![](/img/alipay.jpg)
+![](/img/wechat_pay.jpg)

@@ -1,8 +1,13 @@
 {
   "name": "stylus-shortcut",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["stylus","shortcut","fast","mixin","bootstrap","customize"],
   "description": "stylus 快捷的混合函数与基础常用样式规则集合，可以更快的完成样式编写",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kwokronny/stylus-shortcut"
+  },
+  "homepage": "https://kwokronny.github.io/stylus-shortcut",
   "main": "src/index.styl",
   "scripts": {
     "test": "node test/test.js",

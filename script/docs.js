@@ -34,6 +34,7 @@ const serve = http.createServer(function (req, res) {
     jpeg: "image/jpeg",
     jpg: "image/jpg",
     png: "image/png",
+    svg: "image/svg+xml",
   };
   var contentType = extMap[extname] || "text/html";
   fs.readFile(staticFile, function (err, content) {
