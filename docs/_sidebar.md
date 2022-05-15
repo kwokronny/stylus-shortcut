@@ -3,3 +3,4 @@
 - [快捷样式](shortcut.md)
 - [混合便捷规则](mixin.md)
 - [支持作者](donate.md)
+- [作者博客](https://kwokronny.top)

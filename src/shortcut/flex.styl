@@ -1,67 +1,73 @@
-.{yoz_prefix}flex {
-	$flex_direction = {
-		h: row,
-		hr: row-reverse,
-		v: column,
-		vr: column-reverse
-	};
+for $s_prefix, $s_type in $yoz_status {
+	.{yoz_prefix}{$s_prefix}flex {
+		$flex_direction = {
+			h: row,
+			hr: row-reverse,
+			v: column,
+			vr: column-reverse
+		};
 
-	for $name, $value in $flex_direction {
-		&-{$name} {
-			display: flex;
-			flex-direction: $value;
-		}
-	}
-
-	$flex_wrap = {
-		n: nowrap,
-		w: wrap,
-		w_rtl: wrap-reverse
-	};
-
-	for $name, $value in $flex_wrap {
-		&-w_{$name} {
-			flex-wrap: $value;
-		}
-	}
-
-	$flex_content = {
-		fs: flex-start,
-		c: center,
-		fe: flex-end,
-		sa: space-around,
-		se: space-evenly,
-		sb: space-between
-	};
-
-	for $name, $value in $flex_content {
-		&-jc_{$name} {
-			justify-content: $value;
+		for $name, $value in $flex_direction {
+			&-{$name}{$s_type} {
+				display: flex;
+				flex-direction: $value;
+			}
 		}
 
-		&-ac_{$name} {
-			align-content: $value;
-		}
-	}
+		$flex_wrap = {
+			n: nowrap,
+			w: wrap,
+			w_rtl: wrap-reverse
+		};
 
-	$flex_items = {
-		fs: flex-start,
-		c: center,
-		fe: flex-end,
-		st: stretch
-	};
-
-	for $name, $value in $flex_items {
-		&-ai_{$name} {
-			align-items: $value;
+		for $name, $value in $flex_wrap {
+			&-w_{$name}{$s_type} {
+				flex-wrap: $value;
+			}
 		}
 
-		&-as_{$name} {
-			align-self: $value;
-		}
-	}
+		$flex_content = {
+			fs: flex-start,
+			c: center,
+			fe: flex-end,
+			sa: space-around,
+			se: space-evenly,
+			sb: space-between
+		};
 
-	&-fill {
-		flex: 1;
+		for $name, $value in $flex_content {
+			&-jc_{$name}{$s_type} {
+				justify-content: $value;
+			}
+
+			&-ac_{$name}{$s_type} {
+				align-content: $value;
+			}
+		}
+
+		$flex_items = {
+			fs: flex-start,
+			c: center,
+			fe: flex-end,
+			st: stretch
+		};
+
+		for $name, $value in $flex_items {
+			&-ai_{$name}{$s_type} {
+				align-items: $value;
+			}
+
+			&-as_{$name}{$s_type} {
+				align-self: $value;
+			}
+		}
+
+		&-fill{$s_type} {
+			flex: 1;
+		}
+
+		&-grow{$s_type} {
+			flex-grow: 1;
+		}
 	}
 }

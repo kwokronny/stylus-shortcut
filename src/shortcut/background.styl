@@ -1,6 +1,7 @@
-.{yoz_prefix} {
+for $s_prefix, $s_type in $yoz_status {
+.{yoz_prefix}{$s_prefix}bg {
 	for $name, $color in yoz_color {
-		&bg-c_{$name} {
+		&-c_{$name}{$s_type} {
 			background-color: $color;
 		}
 	}
@@ -14,7 +15,7 @@
 	};
 
 	for $name, $mode in $background_mode {
-		&bg-m_{$name} {
+		&-m_{$name}{$s_type} {
 			background-size: $mode;
 			background-position: center;
 		}
@@ -28,8 +29,9 @@
 	};
 
 	for $name, $repeat in $background_repeat {
-		&bg-r_{$name} {
+		&-r_{$name}{$s_type} {
 			background-repeat: $repeat;
 		}
 	}
+}
 }

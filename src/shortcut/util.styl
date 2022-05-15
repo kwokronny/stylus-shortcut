@@ -8,14 +8,6 @@
 		float: right;
 	}
 
-	$cursor_value = auto,default,pointer,wait,text,move,help,not-allowed,none,context-menu,progress,cell,crosshair,vertical-text,alias,copy,no-drop,grab,grabbing,all-scroll,col-resize,row-resize,n-resize,e-resize,s-resize,w-resize,ne-resize,nw-resize,se-resize,sw-resize,ew-resize,ns-resize,nesw-resize,nwse-resize,zoom-in,zoom-out;
-
-	for $cur, $idx in $cursor_value {
-		&curs-{$cur} {
-			cursor: $cur;
-		}
-	}
-
 	&clearfix {
 		&:before, &:after {
 			display: table;
@@ -24,110 +16,161 @@
 		}
 	}
 
-	&spac {
-		for $name, $spacing in yoz_spacing {
-			&-m_{$name} {
-				margin: $spacing;
-			}
+	$trans_property = {
+		all: 'all',
+		colors: 'background-color, border-color, color, fill, stroke',
+		shadow: 'box-shadow'
+	};
 
-			&-mv_{$name} {
-				margin-top: $spacing;
-				margin-bottom: $spacing;
-			}
-
-			&-mh_{$name} {
-				margin-left: $spacing;
-				margin-right: $spacing;
-			}
-
-			&-mt_{$name} {
-				margin-top: $spacing;
-			}
-
-			&-mb_{$name} {
-				margin-bottom: $spacing;
-			}
-
-			&-ml_{$name} {
-				margin-left: $spacing;
-			}
-
-			&-mr_{$name} {
-				margin-right: $spacing;
-			}
-
-			&-p_{$name} {
-				padding: $spacing;
-			}
-
-			&-pv_{$name} {
-				padding-top: $spacing;
-				padding-bottom: $spacing;
-			}
-
-			&-ph_{$name} {
-				padding-left: $spacing;
-				padding-right: $spacing;
-			}
-
-			&-pt_{$name} {
-				padding-top: $spacing;
-			}
-
-			&-pb_{$name} {
-				padding-bottom: $spacing;
-			}
-
-			&-pl_{$name} {
-				padding-left: $spacing;
-			}
-
-			&-pr_{$name} {
-				padding-right: $spacing;
-			}
+	for $name, $property in $trans_property {
+		&tran-{$name} {
+			transition-property: unquote($property);
+			transition-timing-function: ease-in-out;
+			transition-duration: 150ms;
 		}
 	}
 
-	&line {
-		$yoz_line_dir = {
-			l: left,
-			r: right,
-			t: top,
-			b: bottom
-		};
+	$trans_func = {
+		l: linear,
+		ei: ease-in,
+		eo: ease-out,
+		eio: ease-in-out
+	};
 
-		for $name, $value in yoz_line {
-			&-a_{$name} {
-				border: $value;
-			}
+	for $name, $func in $trans_property {
+		&tran-f_{$name} {
+			transition-timing-function: $func;
+		}
+	}
 
-			&-v_{$name} {
-				border-top: $value;
-				border-bottom: $value;
-			}
+	for $ms in 200 300 500 700 1000 2000 {
+		&tran-t_{$ms} {
+			transition-duration: unit($ms, 'ms');
+		}
 
-			&-h_{$name} {
-				border-left: $value;
-				border-right: $value;
-			}
+		&tran-d_{$ms} {
+			transition-delay: unit($ms, 'ms');
+		}
+	}
 
-			for $dir, $dir_value in $yoz_line_dir {
-				&-{$dir}_{$name} {
-					border-{$dir_value}: $value;
+	$cursor_value = auto, default, pointer, wait, text, move, help, not-allowed, none, context-menu, progress, cell, crosshair, vertical-text, alias, copy, no-drop, grab, grabbing, all-scroll, col-resize, row-resize, n-resize, e-resize, s-resize, w-resize, ne-resize, nw-resize, se-resize, sw-resize, ew-resize, ns-resize, nesw-resize, nwse-resize, zoom-in, zoom-out;
+
+	for $cur, $idx in $cursor_value {
+		&curs-{$cur} {
+			cursor: $cur;
+		}
+	}
+
+	for $s_prefix, $s_type in $yoz_status {
+		&{$s_prefix}spac {
+			for $name, $spacing in yoz_spacing {
+				$name = $name + $s_type;
+
+				&-m_{$name} {
+					margin: $spacing;
+				}
+
+				&-mv_{$name} {
+					margin-top: $spacing;
+					margin-bottom: $spacing;
+				}
+
+				&-mh_{$name} {
+					margin-left: $spacing;
+					margin-right: $spacing;
+				}
+
+				&-mt_{$name} {
+					margin-top: $spacing;
+				}
+
+				&-mb_{$name} {
+					margin-bottom: $spacing;
+				}
+
+				&-ml_{$name} {
+					margin-left: $spacing;
+				}
+
+				&-mr_{$name} {
+					margin-right: $spacing;
+				}
+
+				&-p_{$name} {
+					padding: $spacing;
+				}
+
+				&-pv_{$name} {
+					padding-top: $spacing;
+					padding-bottom: $spacing;
+				}
+
+				&-ph_{$name} {
+					padding-left: $spacing;
+					padding-right: $spacing;
+				}
+
+				&-pt_{$name} {
+					padding-top: $spacing;
+				}
+
+				&-pb_{$name} {
+					padding-bottom: $spacing;
+				}
+
+				&-pl_{$name} {
+					padding-left: $spacing;
+				}
+
+				&-pr_{$name} {
+					padding-right: $spacing;
 				}
 			}
 		}
-	}
 
-	for $name, $value in yoz_shadow {
-		&shadow-{$name} {
-			box-shadow: $value;
+		&{$s_prefix}line {
+			$yoz_line_dir = {
+				l: left,
+				r: right,
+				t: top,
+				b: bottom
+			};
+
+			for $name, $value in yoz_line {
+				$name = $name + $s_type;
+
+				&-a_{$name} {
+					border: $value;
+				}
+
+				&-v_{$name} {
+					border-top: $value;
+					border-bottom: $value;
+				}
+
+				&-h_{$name} {
+					border-left: $value;
+					border-right: $value;
+				}
+
+				for $dir, $dir_value in $yoz_line_dir {
+					&-{$dir}_{$name} {
+						border-{$dir_value}: $value;
+					}
+				}
+			}
 		}
-	}
 
-	for $name, $value in yoz_radius {
-		&radius-{$name} {
-			border-radius: $value;
+		for $name, $value in yoz_shadow {
+			&{$s_prefix}shadow-{$name}{$s_type} {
+				box-shadow: $value;
+			}
+		}
+
+		for $name, $value in yoz_radius {
+			&{$s_prefix}radius-{$name}{$s_type} {
+				border-radius: $value;
+			}
 		}
 	}
 }

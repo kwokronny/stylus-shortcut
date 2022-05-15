@@ -1,55 +1,57 @@
-.{yoz_prefix}text {
-	for $name, $c in yoz_color {
-		&-c_{$name} {
-			color: $c;
+for $s_prefix, $s_type in $yoz_status {
+	.{yoz_prefix}{$s_prefix}text {
+		for $name, $c in yoz_color {
+			&-c_{$name}{$s_type} {
+				color: $c;
+			}
 		}
-	}
 
-	for $name, $value in yoz_font_family {
-		&-f_{$name} {
-			font-family: $value;
+		for $name, $value in yoz_font_family {
+			&-f_{$name}{$s_type} {
+				font-family: $value;
+			}
 		}
-	}
 
-	$yoz_text_align = {
-		l: left,
-		r: right,
-		c: center,
-		j: justify
-	};
+		$yoz_text_align = {
+			l: left,
+			r: right,
+			c: center,
+			j: justify
+		};
 
-	for $name, $value in $yoz_text_align {
-		&-a_{$name} {
-			text-align: $value;
+		for $name, $value in $yoz_text_align {
+			&-a_{$name}{$s_type} {
+				text-align: $value;
+			}
 		}
-	}
 
-	for $name, $size in yoz_font_size {
-		&-s_{$name} {
-			font-size: $size[0];
-			line-height: $size[1];
+		for $name, $size in yoz_font_size {
+			&-s_{$name}{$s_type} {
+				font-size: $size[0];
+				line-height: $size[1];
+			}
 		}
-	}
 
-	for $line in 1 .. 6 {
-		&-clamp_{$line} {
-			overflow: hidden;
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: $line;
+		for $line in 1 .. 6 {
+			&-clamp_{$line}{$s_type} {
+				overflow: hidden;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: $line;
+			}
 		}
-	}
 
-	$yoz_text_overflow = {
-		e: ellipsis,
-		c: clip
-	};
+		$yoz_text_overflow = {
+			e: ellipsis,
+			c: clip
+		};
 
-	for $name, $value in $yoz_text_overflow {
-		&-o_{$name} {
-			overflow: hidden;
-			text-overflow: $value;
-			white-space: nowrap;
+		for $name, $value in $yoz_text_overflow {
+			&-o_{$name}{$s_type} {
+				overflow: hidden;
+				text-overflow: $value;
+				white-space: nowrap;
+			}
 		}
 	}
 }

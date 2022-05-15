@@ -193,22 +193,22 @@ yoz_grid_query ?= {
 
   ```html
   <div class="clearfix">
-    <div class="box bg-c_border float-l spac-m_10">外间距</div>
-    <div class="box bg-c_border float-l spac-mv_10">外间距 - 上下</div>
-    <div class="box bg-c_border float-l spac-mh_10">外间距 - 左右</div>
-    <div class="box bg-c_border float-l spac-ml_10">外间距 - 左</div>
-    <div class="box bg-c_border float-l spac-mr_10">外间距 - 右</div>
-    <div class="box bg-c_border float-l spac-mt_10">外间距 - 上</div>
-    <div class="box bg-c_border float-l spac-mb_10">外间距 - 下</div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-m_10">外间距</div></div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-mv_10">外间距 - 上下</div></div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-mh_10">外间距 - 左右</div></div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-ml_10">外间距 - 左</div></div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-mr_10">外间距 - 右</div></div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-mt_10">外间距 - 上</div></div>
+    <div class="line-a_so1 spac-mr_10 float-l"><div class="box bg-c_primary spac-mb_10">外间距 - 下</div></div>
   </div>
-  <div class="clearfix">
-    <div class="box bg-c_border float-l spac-p_10">内间距</div>
-    <div class="box bg-c_border float-l spac-pv_10">内间距 - 上下</div>
-    <div class="box bg-c_border float-l spac-ph_10">内间距 - 左右</div>
-    <div class="box bg-c_border float-l spac-pl_10">内间距 - 左</div>
-    <div class="box bg-c_border float-l spac-pr_10">内间距 - 右</div>
-    <div class="box bg-c_border float-l spac-pt_10">内间距 - 上</div>
-    <div class="box bg-c_border float-l spac-pb_10">内间距 - 下</div>
+  <div class="flex-h flex-jc_sb spac-mt_10">
+    <div class="box line-a_so1 spac-p_10">内间距</div>
+    <div class="box line-a_so1 spac-pv_10">内间距 - 上下</div>
+    <div class="box line-a_so1 spac-ph_10">内间距 - 左右</div>
+    <div class="box line-a_so1 spac-pl_10">内间距 - 左</div>
+    <div class="box line-a_so1 spac-pr_10">内间距 - 右</div>
+    <div class="box line-a_so1 spac-pt_10">内间距 - 上</div>
+    <div class="box line-a_so1 spac-pb_10">内间距 - 下</div>
   </div>
   ```
 
@@ -354,7 +354,7 @@ yoz_grid_query ?= {
   <div class="text-c_primary">字体颜色primary</div>
   <div class="text-c_success">字体颜色success</div>
   <div class="text-c_warning">字体颜色warning</div>
-  <div class="text-c_sub_text">字体颜色sub_text</div>
+  <div class="text-c_sub_text h:text-c_success">字体颜色sub_text</div>
   ```
 
 - ### 字体大小与行距 `text-s_{name}`
@@ -370,7 +370,7 @@ yoz_grid_query ?= {
   #### 示例
 
   ```html
-  <div class="text-s_e">small 辅助文字</div>
+  <div class="text-s_e h:text-s_lt">small 辅助文字</div>
   <div class="text-s_c">middle 正文</div>
   <div class="text-s_st">small title 小标题</div>
   <div class="text-s_t">title 标题</div>
@@ -423,7 +423,7 @@ yoz_grid_query ?= {
   | :-- | -------- | ------ |
   | e   | ellipsis | 省略号 |
   | c   | clip     | 截断   |
-  
+
   > 对应代码
 
   ```stylus
@@ -762,6 +762,101 @@ yoz_grid_query ?= {
   </div>
   ```
 
+## 过渡动画
+
+- ### 过渡动画 `tran-{key}`
+
+  | key    | 对应值                                              |
+  | :----- | --------------------------------------------------- |
+  | all    | all                                                 |
+  | colors | background-color, border-color, color, fill, stroke |
+  | shadow | box-shadow                                          |
+
+   <!--   | opacity                                             | opacity   | -->
+  <!--   | transform                                           | transform | -->
+
+  ```stylus
+  .tran-all{
+    transition-property: all;
+    transition-timing-function: ease-in-out;
+    transition-duration: 150ms;
+  }
+  ```
+
+  #### 示例
+
+  ```html
+  <div id="tranDemo" class="box bg-c_success h:bg-c_warning tran-colors"></div>
+  ```
+
+- ### 过渡计时函数 `tran-f_{key}`
+
+  | key | 对应值     |
+  | :-- | ---------- |
+  | l   | linear     |
+  | ei  | ease-in    |
+  | eo  | ease-out   |
+  | eio | ease-in-ou |
+
+  #### 示例
+
+  ```html
+  <div id="tranTimeFunctionDemo" class="flex-h flex-jc_sb">
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-f_l tran-t_1000">linear</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-f_ei tran-t_1000">ease-in</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-f_eo tran-t_1000">ease-out</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-f_eio tran-t_1000">ease-in-out</div>
+  </div>
+  ```
+
+- ### 过渡持续时间 `tran-t_{key}`
+
+  | key  | 对应值 |
+  | :--- | ------ |
+  | 200  | 200ms  |
+  | 300  | 300ms  |
+  | 500  | 500ms  |
+  | 700  | 700ms  |
+  | 1000 | 1000ms |
+  | 2000 | 2000ms |
+
+  #### 示例
+
+  ```html
+  <div id="tranTimeDemo" class="flex-h flex-jc_sb">
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-t_200">200ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-t_300">300ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-t_500">500ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-t_700">700ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-t_1000">1000ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-t_2000">2000ms</div>
+  </div>
+  ```
+
+- ### 过渡延迟时间 `tran-d_{key}`
+
+  | key  | 对应值 |
+  | :--- | ------ |
+  | 200  | 200ms  |
+  | 300  | 300ms  |
+  | 500  | 500ms  |
+  | 700  | 700ms  |
+  | 1000 | 1000ms |
+  | 2000 | 2000ms |
+
+  #### 示例
+
+  ```html
+  <div id="tranDelayDemo" class="flex-h flex-jc_sb">
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-d_200">200ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-d_300">300ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-d_500">500ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-d_700">700ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-d_1000">1000ms</div>
+    <div class="box bg-c_success h:bg-c_warning tran-colors tran-d_2000">2000ms</div>
+  </div>
+  ```
+
 ## 栅格化
 
 - ### 栅格化实现 `row[-flex]`
@@ -880,7 +975,7 @@ yoz_grid_query ?= {
 
   #### 示例
 
-  ```htm
+  ```html
   <div class="row gutter-s">
     <div class="col-p-24 col-t-0 col-0"><div class="line-a_so1 text-clamp_1">.col-p-24.col-t-0.col-0</div></div>
     <div class="col-p-12 col-p-ml_12 col-t-24 col-2"><div class="line-a_so1 text-clamp_1">.col-p-12.col-p-ml_12.col-t-24.col-2</div></div>
